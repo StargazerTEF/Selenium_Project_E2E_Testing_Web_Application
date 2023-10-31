@@ -11,6 +11,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import pages.HeaderPage;
 import pages.InventoryPage;
 import pages.LoginPage;
 
@@ -24,6 +25,7 @@ public abstract class BasicTest {
     protected JavascriptExecutor js;
     protected LoginPage loginPage;
     protected InventoryPage inventoryPage;
+    protected HeaderPage headerPage;
 
     @BeforeClass
     public void setup() {
@@ -36,6 +38,7 @@ public abstract class BasicTest {
         js = (JavascriptExecutor) driver;
         loginPage = new LoginPage(driver, wait);
         inventoryPage = new InventoryPage(driver, wait);
+        headerPage = new HeaderPage(driver, wait);
     }
 
     @BeforeMethod
