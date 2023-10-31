@@ -60,4 +60,13 @@ public class LoginTests extends BasicTest {
         Assert.assertTrue(loginPage.getUsernameField().isEnabled(),
                 "Username field should be enabled.");
     }
+
+    @Test(priority = 8, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatPasswordFieldIsEnabled() {
+
+        loginPage.clickOnPasswordField();
+        loginPage.fillInPasswordField("123");
+        Assert.assertTrue(loginPage.getPasswordField().isEnabled(),
+                "Password field should be enabled.");
+    }
 }

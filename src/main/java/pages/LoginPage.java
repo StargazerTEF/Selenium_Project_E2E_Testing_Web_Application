@@ -34,4 +34,14 @@ public class LoginPage extends BasicPage {
         getUsernameField().clear();
         getUsernameField().sendKeys(userName);
     }
+    public WebElement getPasswordField () {
+        return driver.findElement(By.id("password"));
+    }
+    public void clickOnPasswordField() {
+        getPasswordField().click();
+    }
+    public void fillInPasswordField(String password) {
+        getPasswordField().clear();
+        getPasswordField().sendKeys(password);
+    }
 }
