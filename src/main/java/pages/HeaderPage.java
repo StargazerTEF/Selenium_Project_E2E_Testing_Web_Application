@@ -21,4 +21,11 @@ public class HeaderPage extends BasicPage {
     public void clickOnBurgerMenuButton() {
         getBurgerMenuButton().click();
     }
+    public WebElement getCartIcon() {
+        return driver.findElement(By.className("shopping_cart_link"));
+    }
+    public void clickOnCartIcon() {
+        getCartIcon().click();
+    }
+
 }
