@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class InventoryPage extends BasicPage {
@@ -94,5 +95,44 @@ public class InventoryPage extends BasicPage {
             x++;
         }
         return isDescendingNamesFilterWorking;
+    }
+    public WebElement getAscendingPricesOptionFromFilterMenu() {
+        return driver.findElement(By.cssSelector("[value='lohi']"));
+    }
+    public void clickOnAscendingPricesOptionFromFilterMenu() {
+        getAscendingPricesOptionFromFilterMenu().click();
+    }
+    public List<WebElement> getProductPrices() {
+        return driver.findElements(By.className("inventory_item_price"));
+    }
+    public List<String> getProductPricesWithout$() {
+        List<String> productPricesWithout$ = new ArrayList<>();
+        for (int i = 0; i < getProductPrices().size(); i++) {
+            String productPrices = getProductPrices().get(i).getText().replace("$", "");
+            productPricesWithout$.add(productPrices);
+        }
+        return productPricesWithout$;
+    }
+    public List<Double> getProductPricesDouble() {
+        List<Double> productPricesDouble = new ArrayList<>();
+        for (int i = 0; i < getProductPricesWithout$().size(); i++) {
+            Double productPrices = Double.parseDouble(getProductPricesWithout$().get(i));
+            productPricesDouble.add(productPrices);
+        }
+        return productPricesDouble;
+    }
+    public boolean isAscendingPricesFilterWorking() {
+        boolean isAscendingPricesFilterWorking = true;
+        int x = 0;
+        int i = 1;
+        while (isAscendingPricesFilterWorking && i < getProductNames().size()) {
+            Double previous = getProductPricesDouble().get(x);
+            if (getProductPricesDouble().get(i) < previous) {
+                isAscendingPricesFilterWorking = false;
+            }
+            i++;
+            x++;
+        }
+        return isAscendingPricesFilterWorking;
     }
 }
