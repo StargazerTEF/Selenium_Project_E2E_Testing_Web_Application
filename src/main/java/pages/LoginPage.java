@@ -44,4 +44,10 @@ public class LoginPage extends BasicPage {
         getPasswordField().clear();
         getPasswordField().sendKeys(password);
     }
+    public WebElement getLoginButton () {
+        return driver.findElement(By.id("login-button"));
+    }
+    public void clickOnLoginButton () {
+        getLoginButton().click();
+    }
 }

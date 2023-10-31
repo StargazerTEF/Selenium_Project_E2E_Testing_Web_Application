@@ -69,4 +69,11 @@ public class LoginTests extends BasicTest {
         Assert.assertTrue(loginPage.getPasswordField().isEnabled(),
                 "Password field should be enabled.");
     }
+    @Test(priority = 9, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatLoginButtonIsEnabled() {
+
+        loginPage.clickOnLoginButton();
+        Assert.assertTrue(loginPage.getLoginButton().isEnabled(),
+                "Login button should be enabled.");
+    }
 }
