@@ -124,4 +124,14 @@ public class ProductsTests extends BasicTest {
         Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "inventory.html",
                 "User should be redirected to the products page.");
     }
+    @Test(priority = 14, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatAboutOptionFromBurgerMenuIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnBurgerMenuButton();
+        leftNavPage.waitUntilBurgerMenuOptionsBecomeVisible();
+        leftNavPage.clickOnAboutLink();
+        Assert.assertEquals(driver.getCurrentUrl(), "https://saucelabs.com/",
+                "User should be redirected to the Sauce Labs website.");
+    }
 }

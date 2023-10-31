@@ -43,4 +43,10 @@ public class LeftNavPage extends BasicPage {
     public void clickOnAllItemsLink () {
         getAllItemsLink().click();
     }
+    public WebElement getAboutLink () {
+        return driver.findElement(By.id("about_sidebar_link"));
+    }
+    public void clickOnAboutLink () {
+        getAboutLink().click();
+    }
 }
