@@ -11,6 +11,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import pages.LoginPage;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -20,6 +21,7 @@ public abstract class BasicTest {
     protected WebDriverWait wait;
     protected String baseUrl = "https://www.saucedemo.com/";
     protected JavascriptExecutor js;
+    protected LoginPage loginPage;
 
     @BeforeClass
     public void setup() {
@@ -30,6 +32,7 @@ public abstract class BasicTest {
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         js = (JavascriptExecutor) driver;
+        loginPage = new LoginPage(driver, wait);
     }
 
     @BeforeMethod
