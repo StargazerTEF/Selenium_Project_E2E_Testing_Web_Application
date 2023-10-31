@@ -178,6 +178,13 @@ public class ProductsTests extends BasicTest {
         leftNavPage.waitUntilExitButtonIsVisible();
         leftNavPage.clickOnExitButton();
         leftNavPage.waitUntilBurgerMenuOptionsBecomeInvisible();
+    }
 
+    @Test(priority = 19, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyTheSubHeaderTitle() {
+
+        loginPage.loginWIthValidCredentials();
+        Assert.assertEquals(inventoryPage.getSubTitleText(), "Products",
+                "Title from sub-header should be 'Products'.");
     }
 }

@@ -26,4 +26,10 @@ public class InventoryPage extends BasicPage {
     public void clickOnAddToCartButtonWithIndex(int itemsIndex) {
         getItemsAddToCardButtonWithIndex(itemsIndex).click();
     }
+    public WebElement getSubTitle() {
+        return driver.findElement(By.cssSelector("span.title"));
+    }
+    public String getSubTitleText() {
+        return getSubTitle().getText();
+    }
 }
