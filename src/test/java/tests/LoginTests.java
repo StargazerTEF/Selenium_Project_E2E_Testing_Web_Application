@@ -242,4 +242,18 @@ public class LoginTests extends BasicTest {
                 "Epic sadface: Username and password do not match any user in this service",
                 "Error message should be 'Epic sadface: Username and password do not match any user in this service'.");
     }
+
+    @Test(priority = 24, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyTheErrorMessageForBlankUsernameField() {
+
+        String username = "";
+        String password = "secret_sauce";
+
+        loginPage.fillInUsernameField(username);
+        loginPage.fillInPasswordField(password);
+        loginPage.clickOnLoginButton();
+        Assert.assertEquals(loginPage.getLoginErrorMessageText(),
+                "Epic sadface: Username is required",
+                "Error message should be 'Epic sadface: Username is required'.");
+    }
 }
