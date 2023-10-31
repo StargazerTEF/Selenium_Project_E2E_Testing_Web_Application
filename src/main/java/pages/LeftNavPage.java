@@ -20,4 +20,7 @@ public class LeftNavPage extends BasicPage {
                 .withMessage("Options from the burger menu should be visible.")
                 .until(ExpectedConditions.visibilityOfAllElements(getOptionsFromBurgerMenu()));
     }
+    public int getNumberOfBurgerMenuOptions () {
+        return getOptionsFromBurgerMenu().size();
+    }
 }

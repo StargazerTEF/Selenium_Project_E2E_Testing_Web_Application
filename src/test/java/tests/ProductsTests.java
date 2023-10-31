@@ -93,4 +93,14 @@ public class ProductsTests extends BasicTest {
         Assert.assertEquals(headerPage.getNumberOfProductsInCartInt(), 2,
                 "Number of products added to the cart should be 2.");
     }
+
+    @Test(priority = 11, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyTheTotalNumberOfOptionsInBurgerMenu() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnBurgerMenuButton();
+        leftNavPage.waitUntilBurgerMenuOptionsBecomeVisible();
+        Assert.assertEquals(leftNavPage.getNumberOfBurgerMenuOptions(), 4,
+                "Number of options in burger menu should be 4.");
+    }
 }
