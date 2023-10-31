@@ -49,4 +49,10 @@ public class LeftNavPage extends BasicPage {
     public void clickOnAboutLink () {
         getAboutLink().click();
     }
+    public WebElement getLogoutButton () {
+        return driver.findElement(By.id("logout_sidebar_link"));
+    }
+    public void clickOnLogoutButton () {
+        getLogoutButton().click();
+    }
 }
