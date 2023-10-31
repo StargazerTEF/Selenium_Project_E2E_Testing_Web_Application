@@ -14,4 +14,12 @@ public class LoginTests extends BasicTest {
                 "Current url should be " + baseUrl);
 
     }
+
+    @Test(priority = 2, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThePageTitle() {
+
+        Assert.assertEquals(driver.getTitle(),
+                "Swag Labs",
+                "Title of the page should be 'Swag Labs'.");
+    }
 }
