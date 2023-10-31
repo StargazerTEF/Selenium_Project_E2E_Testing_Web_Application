@@ -215,4 +215,15 @@ public class ProductsTests extends BasicTest {
         Assert.assertTrue(inventoryPage.isAscendingNamesFilterWorking(),
                 "Ascending name filter is not working.");
     }
+    @Test(priority = 23, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatDescendingNamesFilterIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.waitUntilFilterButtonIsVisible();
+        inventoryPage.clickOnFilterButton();
+        inventoryPage.waitUntilFilterMenuOptionsAreVisible();
+        inventoryPage.clickOnDescendingNamesOptionFromFilterMenu();
+        Assert.assertTrue(inventoryPage.isDescendingNamesFilterWorking(),
+                "Descending name filter is not working.");
+    }
 }
