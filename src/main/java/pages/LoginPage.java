@@ -59,4 +59,7 @@ public class LoginPage extends BasicPage {
     public String getLoginButtonLabel () {
         return getLoginButton().getAttribute("value");
     }
+    public boolean doesUsernameFieldExistWhenUserIsLoggedIn() {
+        return elementExists(By.id("user-name"), 1);
+    }
 }
