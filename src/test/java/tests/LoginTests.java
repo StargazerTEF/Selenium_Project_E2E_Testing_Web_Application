@@ -256,4 +256,17 @@ public class LoginTests extends BasicTest {
                 "Epic sadface: Username is required",
                 "Error message should be 'Epic sadface: Username is required'.");
     }
+    @Test(priority = 25, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyTheErrorMessageForBlankPasswordField() {
+
+        String username = "standard_user";
+        String password = "";
+
+        loginPage.fillInUsernameField(username);
+        loginPage.fillInPasswordField(password);
+        loginPage.clickOnLoginButton();
+        Assert.assertEquals(loginPage.getLoginErrorMessageText(),
+                "Epic sadface: Password is required",
+                "Error message should be 'Epic sadface: Password is required'.");
+    }
 }
