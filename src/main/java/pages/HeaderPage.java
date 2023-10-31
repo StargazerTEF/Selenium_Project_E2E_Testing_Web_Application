@@ -30,4 +30,7 @@ public class HeaderPage extends BasicPage {
     public int getNumberOfProductsInCartInt () {
         return Integer.parseInt(getCartIcon().getText());
     }
+    public String getNumberOfProductsInCart () {
+        return getCartIcon().getText();
+    }
 }

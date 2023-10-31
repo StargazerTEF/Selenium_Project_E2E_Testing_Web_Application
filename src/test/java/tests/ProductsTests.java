@@ -146,4 +146,18 @@ public class ProductsTests extends BasicTest {
         Assert.assertEquals(driver.getCurrentUrl(), baseUrl,
                 "User should be redirected to the login page.");
     }
+    @Test(priority = 16, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatResetAppStateOptionFromBurgerMenuIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(4);
+        inventoryPage.clickOnAddToCartButtonWithIndex(0);
+        Assert.assertEquals(headerPage.getNumberOfProductsInCartInt(), 2,
+                "Number of products added to the cart should be 2.");
+        headerPage.clickOnBurgerMenuButton();
+        leftNavPage.waitUntilBurgerMenuOptionsBecomeVisible();
+        leftNavPage.clickOnResetAppButton();
+        Assert.assertEquals(headerPage.getNumberOfProductsInCart(), "",
+                "Cart should be empty.");
+    }
 }
