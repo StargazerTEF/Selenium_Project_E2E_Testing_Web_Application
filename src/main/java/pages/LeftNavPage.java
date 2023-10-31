@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LeftNavPage extends BasicPage {
@@ -22,5 +24,17 @@ public class LeftNavPage extends BasicPage {
     }
     public int getNumberOfBurgerMenuOptions () {
         return getOptionsFromBurgerMenu().size();
+    }
+    public boolean checkSpellingOfAllOptionsInBurgerMenu() {
+        boolean checkSpelling = true;
+        ArrayList<String> namesOfBurgerMenuOptions = new ArrayList<>(Arrays.asList("All Items", "About", "Logout", "Reset App State"));
+        int i = 0;
+        while (checkSpelling && i < getOptionsFromBurgerMenu().size()) {
+            if (!getOptionsFromBurgerMenu().get(i).getText().equals(namesOfBurgerMenuOptions.get(i))) {
+                checkSpelling = false;
+            }
+            i++;
+        }
+        return checkSpelling;
     }
 }

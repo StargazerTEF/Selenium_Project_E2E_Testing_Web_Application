@@ -103,4 +103,14 @@ public class ProductsTests extends BasicTest {
         Assert.assertEquals(leftNavPage.getNumberOfBurgerMenuOptions(), 4,
                 "Number of options in burger menu should be 4.");
     }
+
+    @Test(priority = 12, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyTheSpellingOfAllOptionsInBurgerMenu() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnBurgerMenuButton();
+        leftNavPage.waitUntilBurgerMenuOptionsBecomeVisible();
+        Assert.assertTrue(leftNavPage.checkSpellingOfAllOptionsInBurgerMenu(),
+                "Options in burger menu are not spelled correctly.");
+    }
 }
