@@ -68,4 +68,9 @@ public class LoginPage extends BasicPage {
     public String getLoginErrorMessageText () {
         return geLoginErrorMessage().getText();
     }
+    public void loginWIthValidCredentials () {
+        fillInUsernameField("standard_user");
+        fillInPasswordField("secret_sauce");
+        clickOnLoginButton();
+    }
 }
