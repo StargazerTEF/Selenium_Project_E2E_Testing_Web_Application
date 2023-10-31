@@ -11,4 +11,7 @@ public class HeaderPage extends BasicPage {
     public boolean doesBurgerMenuButtonExist() {
         return elementExists(By.id("react-burger-menu-btn"));
     }
+    public boolean doesCartIconExist () {
+        return elementExists(By.className("shopping_cart_link"));
+    }
 }
