@@ -146,6 +146,7 @@ public class ProductsTests extends BasicTest {
         Assert.assertEquals(driver.getCurrentUrl(), baseUrl,
                 "User should be redirected to the login page.");
     }
+
     @Test(priority = 16, retryAnalyzer = RetryAnalyzer.class)
     public void VerifyThatResetAppStateOptionFromBurgerMenuIsWorking() {
 
@@ -159,5 +160,23 @@ public class ProductsTests extends BasicTest {
         leftNavPage.clickOnResetAppButton();
         Assert.assertEquals(headerPage.getNumberOfProductsInCart(), "",
                 "Cart should be empty.");
+    }
+
+    @Test(priority = 17, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatTheExitButtonFromBurgerMenuIsPresent() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnBurgerMenuButton();
+        leftNavPage.waitUntilExitButtonIsVisible();
+    }
+
+    @Test(priority = 18, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatTheExitButtonFromBurgerMenuIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnBurgerMenuButton();
+        leftNavPage.waitUntilExitButtonIsVisible();
+        leftNavPage.clickOnExitButton();
+        leftNavPage.waitUntilBurgerMenuOptionsBecomeInvisible();
     }
 }

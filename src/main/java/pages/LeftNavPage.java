@@ -61,4 +61,20 @@ public class LeftNavPage extends BasicPage {
     public void clickOnResetAppButton () {
         getResetAppButton().click();
     }
+    public WebElement getExitButton () {
+        return driver.findElement(By.id("react-burger-cross-btn"));
+    }
+    public void waitUntilExitButtonIsVisible () {
+        wait
+                .withMessage("Exit button should be visible.")
+                .until(ExpectedConditions.visibilityOf(getExitButton()));
+    }
+    public void clickOnExitButton () {
+        getExitButton().click();
+    }
+    public void waitUntilBurgerMenuOptionsBecomeInvisible() {
+        wait
+                .withMessage("Options from the burger menu should not be visible.")
+                .until(ExpectedConditions.invisibilityOfAllElements(getOptionsFromBurgerMenu()));
+    }
 }
