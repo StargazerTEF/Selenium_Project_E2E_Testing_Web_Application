@@ -83,4 +83,14 @@ public class ProductsTests extends BasicTest {
         Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "cart.html",
                 "User should be redirected to the cart page.");
     }
+
+    @Test(priority = 10, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatTheCartIconHasCorrectNumberOfAddedItems() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(3);
+        inventoryPage.clickOnAddToCartButtonWithIndex(1);
+        Assert.assertEquals(headerPage.getNumberOfProductsInCartInt(), 2,
+                "Number of products added to the cart should be 2.");
+    }
 }

@@ -27,5 +27,7 @@ public class HeaderPage extends BasicPage {
     public void clickOnCartIcon() {
         getCartIcon().click();
     }
-
+    public int getNumberOfProductsInCartInt () {
+        return Integer.parseInt(getCartIcon().getText());
+    }
 }
