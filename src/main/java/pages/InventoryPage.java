@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
@@ -31,5 +32,13 @@ public class InventoryPage extends BasicPage {
     }
     public String getSubTitleText() {
         return getSubTitle().getText();
+    }
+    public WebElement getFilterButton() {
+        return driver.findElement(By.cssSelector("span.select_container"));
+    }
+    public void waitUntilFilterButtonIsVisible() {
+        wait
+                .withMessage("Filter button should be visible.")
+                .until(ExpectedConditions.visibilityOf(getFilterButton()));
     }
 }
