@@ -124,4 +124,17 @@ public class LoginTests extends BasicTest {
         Assert.assertFalse(loginPage.doesUsernameFieldExistWhenUserIsLoggedIn(),
                 "Username field shouldn't be present.");
     }
+
+    @Test(priority = 15, retryAnalyzer = RetryAnalyzer.class)
+    public void LoginWithCorrectUsernameAndIncorrectPassword() {
+
+        String username = "standard_user";
+        String password = "secret_sauce123";
+
+        loginPage.fillInUsernameField(username);
+        loginPage.fillInPasswordField(password);
+        loginPage.clickOnLoginButton();
+        Assert.assertEquals(driver.getCurrentUrl(), baseUrl,
+                "User should fail to login.");
+    }
 }
