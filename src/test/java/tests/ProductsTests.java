@@ -251,4 +251,15 @@ public class ProductsTests extends BasicTest {
         Assert.assertTrue(inventoryPage.isDescendingPricesFilterWorking(),
                 "Descending prices filter is not working.");
     }
+
+    @Test(priority = 26, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyTheSpellingOfAllFilterOptions() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.waitUntilFilterButtonIsVisible();
+        inventoryPage.clickOnFilterButton();
+        inventoryPage.waitUntilFilterMenuOptionsAreVisible();
+        Assert.assertTrue(inventoryPage.checkSpellingOfAllOptionsInFilterMenu(),
+                "Options in filter menu are not spelled correctly.");
+    }
 }

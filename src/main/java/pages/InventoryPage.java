@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class InventoryPage extends BasicPage {
@@ -154,5 +155,17 @@ public class InventoryPage extends BasicPage {
             x++;
         }
         return isDescendingPricesFilterWorking;
+    }
+    public boolean checkSpellingOfAllOptionsInFilterMenu() {
+        boolean checkSpelling = true;
+        ArrayList<String> namesOfFilterMenuOptions = new ArrayList<>(Arrays.asList("Name (A to Z)", "Name (Z to A)", "Price (low to high)", "Price (high to low)"));
+        int i = 0;
+        while (checkSpelling && i < getFilterMenuOptions().size()) {
+            if (!getFilterMenuOptions().get(i).getText().equals(namesOfFilterMenuOptions.get(i))) {
+                checkSpelling = false;
+            }
+            i++;
+        }
+        return checkSpelling;
     }
 }
