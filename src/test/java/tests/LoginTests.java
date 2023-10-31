@@ -98,4 +98,17 @@ public class LoginTests extends BasicTest {
         Assert.assertEquals(loginPage.getLoginButtonLabel(), "Login",
                 "Label of login button should be 'Login'.");
     }
+
+    @Test(priority = 13, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatTheLoginButtonIsWorking() {
+
+        String username = "standard_user";
+        String password = "secret_sauce";
+
+        loginPage.fillInUsernameField(username);
+        loginPage.fillInPasswordField(password);
+        loginPage.clickOnLoginButton();
+        Assert.assertEquals(driver.getCurrentUrl(),baseUrl + "inventory.html",
+                "User should be redirected to the products page.");
+    }
 }
