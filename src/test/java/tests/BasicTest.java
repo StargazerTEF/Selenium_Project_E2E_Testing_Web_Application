@@ -13,6 +13,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import pages.HeaderPage;
 import pages.InventoryPage;
+import pages.LeftNavPage;
 import pages.LoginPage;
 
 import java.io.IOException;
@@ -26,6 +27,7 @@ public abstract class BasicTest {
     protected LoginPage loginPage;
     protected InventoryPage inventoryPage;
     protected HeaderPage headerPage;
+    protected LeftNavPage leftNavPage;
 
     @BeforeClass
     public void setup() {
@@ -39,6 +41,8 @@ public abstract class BasicTest {
         loginPage = new LoginPage(driver, wait);
         inventoryPage = new InventoryPage(driver, wait);
         headerPage = new HeaderPage(driver, wait);
+        loginPage = new LoginPage(driver, wait);
+        leftNavPage = new LeftNavPage(driver, wait);
     }
 
     @BeforeMethod
