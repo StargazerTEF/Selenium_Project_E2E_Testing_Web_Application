@@ -168,4 +168,7 @@ public class InventoryPage extends BasicPage {
         }
         return checkSpelling;
     }
+    public int getNumberOfFilterMenuOptions() {
+        return getFilterMenuOptions().size();
+    }
 }

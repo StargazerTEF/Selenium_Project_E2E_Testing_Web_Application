@@ -262,4 +262,15 @@ public class ProductsTests extends BasicTest {
         Assert.assertTrue(inventoryPage.checkSpellingOfAllOptionsInFilterMenu(),
                 "Options in filter menu are not spelled correctly.");
     }
+
+    @Test(priority = 27, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyTheTotalNumberOfFilterOptions() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.waitUntilFilterButtonIsVisible();
+        inventoryPage.clickOnFilterButton();
+        inventoryPage.waitUntilFilterMenuOptionsAreVisible();
+        Assert.assertEquals(inventoryPage.getNumberOfFilterMenuOptions(), 4,
+                "Number of filter menu options should be 4.");
+    }
 }
