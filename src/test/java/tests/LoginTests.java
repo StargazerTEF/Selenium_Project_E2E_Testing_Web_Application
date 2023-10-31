@@ -163,11 +163,25 @@ public class LoginTests extends BasicTest {
         Assert.assertEquals(driver.getCurrentUrl(), baseUrl,
                 "User should fail to login.");
     }
+
     @Test(priority = 18, retryAnalyzer = RetryAnalyzer.class)
     public void LoginWithBlankUsernameAndPassword() {
 
         String username = "";
         String password = "";
+
+        loginPage.fillInUsernameField(username);
+        loginPage.fillInPasswordField(password);
+        loginPage.clickOnLoginButton();
+        Assert.assertEquals(driver.getCurrentUrl(), baseUrl,
+                "User should fail to login.");
+    }
+
+    @Test(priority = 19, retryAnalyzer = RetryAnalyzer.class)
+    public void LoginWithBlankUsernameAndCorrectPassword() {
+
+        String username = "";
+        String password = "secret_sauce";
 
         loginPage.fillInUsernameField(username);
         loginPage.fillInPasswordField(password);
