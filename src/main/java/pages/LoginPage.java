@@ -21,4 +21,7 @@ public class LoginPage extends BasicPage {
     public boolean doesPasswordFieldExist() {
         return elementExists(By.id("password"));
     }
+    public boolean doesLoginButtonExist () {
+        return elementExists(By.id("login-button"));
+    }
 }
