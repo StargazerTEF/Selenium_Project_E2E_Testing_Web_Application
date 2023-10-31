@@ -23,4 +23,13 @@ public class ProductsTests extends BasicTest {
                 "Swag Labs",
                 "Title of the page should be 'Swag Labs'.");
     }
+
+    @Test(priority = 3, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyTheTitleInHeader() {
+
+        loginPage.loginWIthValidCredentials();
+        Assert.assertEquals(inventoryPage.getHeaderText(),
+                "Swag Labs",
+                "Title in header should be 'Swag Labs'.");
+    }
 }

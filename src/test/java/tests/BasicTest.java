@@ -11,6 +11,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import pages.InventoryPage;
 import pages.LoginPage;
 
 import java.io.IOException;
@@ -22,6 +23,7 @@ public abstract class BasicTest {
     protected String baseUrl = "https://www.saucedemo.com/";
     protected JavascriptExecutor js;
     protected LoginPage loginPage;
+    protected InventoryPage inventoryPage;
 
     @BeforeClass
     public void setup() {
@@ -33,6 +35,7 @@ public abstract class BasicTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         js = (JavascriptExecutor) driver;
         loginPage = new LoginPage(driver, wait);
+        inventoryPage = new InventoryPage(driver, wait);
     }
 
     @BeforeMethod
