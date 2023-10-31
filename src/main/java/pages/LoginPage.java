@@ -56,4 +56,7 @@ public class LoginPage extends BasicPage {
     public String getPasswordFieldLabel () {
         return getPasswordField().getAttribute("placeholder");
     }
+    public String getLoginButtonLabel () {
+        return getLoginButton().getAttribute("value");
+    }
 }

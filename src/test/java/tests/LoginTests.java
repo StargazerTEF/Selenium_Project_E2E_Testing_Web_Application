@@ -84,10 +84,18 @@ public class LoginTests extends BasicTest {
         Assert.assertEquals(loginPage.getUsernameFieldLabel(), "Username",
                 "Label of username field should be 'Username'.");
     }
+
     @Test(priority = 11, retryAnalyzer = RetryAnalyzer.class)
     public void VerifyTheLabelOfPasswordField() {
 
         Assert.assertEquals(loginPage.getPasswordFieldLabel(), "Password",
                 "Label of password field should be 'Password'.");
+    }
+
+    @Test(priority = 12, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyTheLabelOfLoginButton() {
+
+        Assert.assertEquals(loginPage.getLoginButtonLabel(), "Login",
+                "Label of login button should be 'Login'.");
     }
 }
