@@ -203,4 +203,16 @@ public class ProductsTests extends BasicTest {
         inventoryPage.clickOnFilterButton();
         inventoryPage.waitUntilFilterMenuOptionsAreVisible();
     }
+
+    @Test(priority = 22, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatAscendingNamesFilterIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.waitUntilFilterButtonIsVisible();
+        inventoryPage.clickOnFilterButton();
+        inventoryPage.waitUntilFilterMenuOptionsAreVisible();
+        inventoryPage.clickOnAscendingNamesOptionFromFilterMenu();
+        Assert.assertTrue(inventoryPage.isAscendingNamesFilterWorking(),
+                "Ascending name filter is not working.");
+    }
 }
