@@ -37,4 +37,10 @@ public class LeftNavPage extends BasicPage {
         }
         return checkSpelling;
     }
+    public WebElement getAllItemsLink () {
+        return driver.findElement(By.id("inventory_sidebar_link"));
+    }
+    public void clickOnAllItemsLink () {
+        getAllItemsLink().click();
+    }
 }
