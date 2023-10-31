@@ -15,7 +15,10 @@ public class LoginPage extends BasicPage {
     public String getHeaderText () {
         return getHeader().getText();
     }
-    public boolean doesUsernameFieldExists() {
+    public boolean doesUsernameFieldExist() {
         return elementExists(By.id("user-name"));
+    }
+    public boolean doesPasswordFieldExist() {
+        return elementExists(By.id("password"));
     }
 }
