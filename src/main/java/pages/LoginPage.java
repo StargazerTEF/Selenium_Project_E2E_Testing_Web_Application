@@ -53,4 +53,7 @@ public class LoginPage extends BasicPage {
     public String getUsernameFieldLabel () {
         return getUsernameField().getAttribute("placeholder");
     }
+    public String getPasswordFieldLabel () {
+        return getPasswordField().getAttribute("placeholder");
+    }
 }
