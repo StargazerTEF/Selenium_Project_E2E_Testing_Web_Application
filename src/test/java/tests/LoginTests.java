@@ -44,10 +44,20 @@ public class LoginTests extends BasicTest {
         Assert.assertTrue(loginPage.doesPasswordFieldExist(),
                 "Password field should be present.");
     }
+
     @Test(priority = 6, retryAnalyzer = RetryAnalyzer.class)
     public void VerifyThatLoginButtonIsPresent() {
 
         Assert.assertTrue(loginPage.doesLoginButtonExist(),
                 "Login button should be present.");
+    }
+
+    @Test(priority = 7, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatUsernameFieldIsEnabled() {
+
+        loginPage.clickOnUsernameField();
+        loginPage.fillInUsernameField("abc");
+        Assert.assertTrue(loginPage.getUsernameField().isEnabled(),
+                "Username field should be enabled.");
     }
 }

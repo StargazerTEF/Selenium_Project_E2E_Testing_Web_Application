@@ -9,10 +9,10 @@ public class LoginPage extends BasicPage {
     public LoginPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
     }
-    public WebElement getHeader () {
+    public WebElement getHeader() {
         return driver.findElement(By.className("login_logo"));
     }
-    public String getHeaderText () {
+    public String getHeaderText() {
         return getHeader().getText();
     }
     public boolean doesUsernameFieldExist() {
@@ -23,5 +23,15 @@ public class LoginPage extends BasicPage {
     }
     public boolean doesLoginButtonExist () {
         return elementExists(By.id("login-button"));
+    }
+    public WebElement getUsernameField() {
+        return driver.findElement(By.id("user-name"));
+    }
+    public void clickOnUsernameField() {
+        getUsernameField().click();
+    }
+    public void fillInUsernameField(String userName) {
+        getUsernameField().clear();
+        getUsernameField().sendKeys(userName);
     }
 }
