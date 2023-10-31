@@ -30,4 +30,11 @@ public class LoginTests extends BasicTest {
                 "Swag Labs",
                 "Title in header should be 'Swag Labs'.");
     }
+
+    @Test(priority = 4, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatUsernameFieldIsPresent() {
+
+        Assert.assertTrue(loginPage.doesUsernameFieldExists(),
+                "Username field should be present.");
+    }
 }

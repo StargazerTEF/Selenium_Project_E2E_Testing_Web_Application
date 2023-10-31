@@ -12,8 +12,10 @@ public class LoginPage extends BasicPage {
     public WebElement getHeader () {
         return driver.findElement(By.className("login_logo"));
     }
-
     public String getHeaderText () {
         return getHeader().getText();
+    }
+    public boolean doesUsernameFieldExists() {
+        return elementExists(By.id("user-name"));
     }
 }
