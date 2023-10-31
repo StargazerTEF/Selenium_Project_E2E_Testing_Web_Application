@@ -41,4 +41,15 @@ public class InventoryPage extends BasicPage {
                 .withMessage("Filter button should be visible.")
                 .until(ExpectedConditions.visibilityOf(getFilterButton()));
     }
+    public void clickOnFilterButton() {
+        getFilterButton().click();
+    }
+    public List<WebElement> getFilterMenuOptions() {
+        return driver.findElements(By.cssSelector(".product_sort_container > option"));
+    }
+    public void waitUntilFilterMenuOptionsAreVisible() {
+        wait
+                .withMessage("Filter menu should be visible.")
+                .until(ExpectedConditions.visibilityOfAllElements(getFilterMenuOptions()));
+    }
 }

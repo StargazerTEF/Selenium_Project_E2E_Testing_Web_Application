@@ -187,10 +187,20 @@ public class ProductsTests extends BasicTest {
         Assert.assertEquals(inventoryPage.getSubTitleText(), "Products",
                 "Title from sub-header should be 'Products'.");
     }
+
     @Test(priority = 20, retryAnalyzer = RetryAnalyzer.class)
     public void VerifyThatTheFilterButtonIsPresent() {
 
         loginPage.loginWIthValidCredentials();
         inventoryPage.waitUntilFilterButtonIsVisible();
+    }
+
+    @Test(priority = 21, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatTheFilterButtonIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.waitUntilFilterButtonIsVisible();
+        inventoryPage.clickOnFilterButton();
+        inventoryPage.waitUntilFilterMenuOptionsAreVisible();
     }
 }
