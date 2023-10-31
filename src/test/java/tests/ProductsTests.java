@@ -178,5 +178,6 @@ public class ProductsTests extends BasicTest {
         leftNavPage.waitUntilExitButtonIsVisible();
         leftNavPage.clickOnExitButton();
         leftNavPage.waitUntilBurgerMenuOptionsBecomeInvisible();
+
     }
 }
