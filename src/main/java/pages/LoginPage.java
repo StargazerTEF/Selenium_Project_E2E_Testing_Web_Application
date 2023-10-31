@@ -50,4 +50,7 @@ public class LoginPage extends BasicPage {
     public void clickOnLoginButton () {
         getLoginButton().click();
     }
+    public String getUsernameFieldLabel () {
+        return getUsernameField().getAttribute("placeholder");
+    }
 }
