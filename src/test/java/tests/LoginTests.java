@@ -215,6 +215,7 @@ public class LoginTests extends BasicTest {
         Assert.assertEquals(driver.getCurrentUrl(), baseUrl,
                 "User should fail to login.");
     }
+
     @Test(priority = 22, retryAnalyzer = RetryAnalyzer.class)
     public void LoginWithIncorrectUsernameAndBlankPassword() {
 
@@ -226,5 +227,19 @@ public class LoginTests extends BasicTest {
         loginPage.clickOnLoginButton();
         Assert.assertEquals(driver.getCurrentUrl(), baseUrl,
                 "User should fail to login.");
+    }
+
+    @Test(priority = 23, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyTheErrorMessageWhenUsernameAndPasswordDoNotMatch() {
+
+        String username = "standard_user123";
+        String password = "secret_sauce123";
+
+        loginPage.fillInUsernameField(username);
+        loginPage.fillInPasswordField(password);
+        loginPage.clickOnLoginButton();
+        Assert.assertEquals(loginPage.getLoginErrorMessageText(),
+                "Epic sadface: Username and password do not match any user in this service",
+                "Error message should be 'Epic sadface: Username and password do not match any user in this service'.");
     }
 }

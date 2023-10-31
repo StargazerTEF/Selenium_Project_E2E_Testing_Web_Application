@@ -62,4 +62,10 @@ public class LoginPage extends BasicPage {
     public boolean doesUsernameFieldExistWhenUserIsLoggedIn() {
         return elementExists(By.id("user-name"), 1);
     }
+    public WebElement geLoginErrorMessage () {
+        return driver.findElement(By.cssSelector(".error-message-container h3"));
+    }
+    public String getLoginErrorMessageText () {
+        return geLoginErrorMessage().getText();
+    }
 }
