@@ -215,6 +215,7 @@ public class ProductsTests extends BasicTest {
         Assert.assertTrue(inventoryPage.isAscendingNamesFilterWorking(),
                 "Ascending name filter is not working.");
     }
+
     @Test(priority = 23, retryAnalyzer = RetryAnalyzer.class)
     public void VerifyThatDescendingNamesFilterIsWorking() {
 
@@ -226,6 +227,7 @@ public class ProductsTests extends BasicTest {
         Assert.assertTrue(inventoryPage.isDescendingNamesFilterWorking(),
                 "Descending name filter is not working.");
     }
+
     @Test(priority = 24, retryAnalyzer = RetryAnalyzer.class)
     public void VerifyThatThePricesFromLowToHighFilterIsWorking() {
 
@@ -236,5 +238,17 @@ public class ProductsTests extends BasicTest {
         inventoryPage.clickOnAscendingPricesOptionFromFilterMenu();
         Assert.assertTrue(inventoryPage.isAscendingPricesFilterWorking(),
                 "Ascending prices filter is not working.");
+    }
+
+    @Test(priority = 25, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatThePricesFromHighToLowFilterIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.waitUntilFilterButtonIsVisible();
+        inventoryPage.clickOnFilterButton();
+        inventoryPage.waitUntilFilterMenuOptionsAreVisible();
+        inventoryPage.clickOnDescendingPricesOptionFromFilterMenu();
+        Assert.assertTrue(inventoryPage.isDescendingPricesFilterWorking(),
+                "Descending prices filter is not working.");
     }
 }

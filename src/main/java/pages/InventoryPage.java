@@ -135,4 +135,24 @@ public class InventoryPage extends BasicPage {
         }
         return isAscendingPricesFilterWorking;
     }
+    public WebElement getDescendingPricesOptionFromFilterMenu() {
+        return driver.findElement(By.cssSelector("[value='hilo']"));
+    }
+    public void clickOnDescendingPricesOptionFromFilterMenu() {
+        getDescendingPricesOptionFromFilterMenu().click();
+    }
+    public boolean isDescendingPricesFilterWorking() {
+        boolean isDescendingPricesFilterWorking = true;
+        int x = 0;
+        int i = 1;
+        while (isDescendingPricesFilterWorking && i < getProductNames().size()) {
+            Double previous = getProductPricesDouble().get(x);
+            if (getProductPricesDouble().get(i) > previous) {
+                isDescendingPricesFilterWorking = false;
+            }
+            i++;
+            x++;
+        }
+        return isDescendingPricesFilterWorking;
+    }
 }
