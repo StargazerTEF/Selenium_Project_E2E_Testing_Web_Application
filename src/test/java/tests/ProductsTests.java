@@ -14,4 +14,13 @@ public class ProductsTests extends BasicTest {
                 baseUrl + "inventory.html",
                 "Current url should be " + baseUrl + "inventory.html");
     }
+
+    @Test(priority = 2, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThePageTitle() {
+
+        loginPage.loginWIthValidCredentials();
+        Assert.assertEquals(driver.getTitle(),
+                "Swag Labs",
+                "Title of the page should be 'Swag Labs'.");
+    }
 }
