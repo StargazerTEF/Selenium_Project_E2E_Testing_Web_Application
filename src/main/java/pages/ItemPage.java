@@ -18,4 +18,12 @@ public class ItemPage extends BasicPage {
                 .withMessage("Items title should be visible.")
                 .until(ExpectedConditions.visibilityOf(getItemsTitle()));
     }
+    public WebElement getItemsDescription() {
+        return driver.findElement(By.cssSelector("div.inventory_details_desc.large_size"));
+    }
+    public void waitUntilItemsDescriptionIsVisible() {
+        wait
+                .withMessage("Items description should be visible.")
+                .until(ExpectedConditions.visibilityOf(getItemsDescription()));
+    }
 }
