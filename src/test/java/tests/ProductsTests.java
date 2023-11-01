@@ -296,4 +296,10 @@ public class ProductsTests extends BasicTest {
         loginPage.loginWIthValidCredentials();
         inventoryPage.waitUntilItemsTitlesAreVisible();
     }
+    @Test(priority = 31, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatItemsDescriptionsAreVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.waitUntilItemsDescriptionsAreVisible();
+    }
 }
