@@ -589,4 +589,16 @@ public class ProductsTests extends BasicTest {
                 "https://www.facebook.com/saucelabs",
                 "Current url should be 'https://www.facebook.com/saucelabs'.");
     }
+
+    @Test(priority = 62, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatLinkedInButtonIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        footerPage.waitUntilLinkedInIconIsVisible();
+        footerPage.clickOnLinkedInIcon();
+        footerPage.switchToNewTab();
+        Assert.assertEquals(driver.getCurrentUrl(),
+                "https://www.linkedin.com/company/sauce-labs/",
+                "Current url should be 'https://www.linkedin.com/company/sauce-labs/'.");
+    }
 }
