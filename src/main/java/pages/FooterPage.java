@@ -45,5 +45,7 @@ public class FooterPage extends BasicPage {
             }
         }
     }
-
+    public void clickOnFacebookIcon () {
+        getFacebookIcon().click();
+    }
 }

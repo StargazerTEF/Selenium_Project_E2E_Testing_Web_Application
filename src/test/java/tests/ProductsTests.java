@@ -565,6 +565,7 @@ public class ProductsTests extends BasicTest {
         loginPage.loginWIthValidCredentials();
         footerPage.waitUntilLinkedInIconIsVisible();
     }
+
     @Test(priority = 60, retryAnalyzer = RetryAnalyzer.class)
     public void VerifyThatTwitterButtonIsWorking() {
 
@@ -575,5 +576,17 @@ public class ProductsTests extends BasicTest {
         Assert.assertEquals(driver.getCurrentUrl(),
                 "https://twitter.com/saucelabs",
                 "Current url should be 'https://twitter.com/saucelabs'.");
+    }
+
+    @Test(priority = 61, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatFacebookButtonIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        footerPage.waitUntilFacebookIconIsVisible();
+        footerPage.clickOnFacebookIcon();
+        footerPage.switchToNewTab();
+        Assert.assertEquals(driver.getCurrentUrl(),
+                "https://www.facebook.com/saucelabs",
+                "Current url should be 'https://www.facebook.com/saucelabs'.");
     }
 }
