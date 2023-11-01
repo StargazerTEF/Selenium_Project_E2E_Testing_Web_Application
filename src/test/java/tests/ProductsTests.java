@@ -317,4 +317,11 @@ public class ProductsTests extends BasicTest {
         loginPage.loginWIthValidCredentials();
         inventoryPage.waitUntilItemsImagesAreVisible();
     }
+
+    @Test(priority = 34, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatItemsAddToCartButtonsAreVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.waitUntilItemsAddToCartButtonsAreVisible();
+    }
 }

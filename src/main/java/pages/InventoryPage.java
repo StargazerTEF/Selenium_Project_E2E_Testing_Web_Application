@@ -214,4 +214,9 @@ public class InventoryPage extends BasicPage {
                 .withMessage("Items images should be visible.")
                 .until(ExpectedConditions.visibilityOfAllElements(getItemsImages()));
     }
+    public void waitUntilItemsAddToCartButtonsAreVisible() {
+        wait
+                .withMessage("Items add to cart buttons should be visible.")
+                .until(ExpectedConditions.visibilityOfAllElements(getItemsAddToCartButtons()));
+    }
 }
