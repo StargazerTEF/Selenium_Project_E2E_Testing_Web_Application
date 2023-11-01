@@ -50,4 +50,7 @@ public class ItemPage extends BasicPage {
                 .withMessage("Item's button text should be 'Remove'.")
                 .until(ExpectedConditions.textToBePresentInElement(getItemsAddToCartButton(), "Remove"));
     }
+    public void clickOnItemsRemoveButton() {
+        getItemsAddToCartButton().click();
+    }
 }
