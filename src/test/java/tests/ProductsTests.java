@@ -544,4 +544,11 @@ public class ProductsTests extends BasicTest {
         Assert.assertTrue(itemPage.isImageCorrectInItem(5),
                 "Items image is not correct.");
     }
+
+    @Test(priority = 57, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatTwitterButtonIsPresent() {
+
+        loginPage.loginWIthValidCredentials();
+        footerPage.waitUntilTwitterIconIsVisible();
+    }
 }
