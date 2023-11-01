@@ -331,6 +331,7 @@ public class ProductsTests extends BasicTest {
         loginPage.loginWIthValidCredentials();
         inventoryPage.waitUntilItemsTitleIsClickableWithIndex(3);
     }
+
     @Test(priority = 36, retryAnalyzer = RetryAnalyzer.class)
     public void VerifyThatItemsTitleIsWorking() {
 
@@ -339,5 +340,15 @@ public class ProductsTests extends BasicTest {
         inventoryPage.clickOnItemsTitleWithIndex(2);
         Assert.assertTrue(driver.getCurrentUrl().contains("item"),
                 "User should be redirected to the item page.");
+    }
+
+    @Test(priority = 37, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatAddToCartButtonIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.waitUntilItemsAddToCartButtonsAreVisible();
+        inventoryPage.clickOnAddToCartButtonWithIndex(4);
+        Assert.assertEquals(headerPage.getNumberOfProductsInCartInt(), 1,
+                "Number of products added to the cart should be 1.");
     }
 }
