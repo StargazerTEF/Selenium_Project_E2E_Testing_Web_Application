@@ -182,4 +182,12 @@ public class InventoryPage extends BasicPage {
     public int getNumberOfItemCards() {
         return getItemCards().size();
     }
+    public List<WebElement> getItemsTitles() {
+        return driver.findElements(By.className("inventory_item_name"));
+    }
+    public void waitUntilItemsTitlesAreVisible() {
+        wait
+                .withMessage("Items titles should be visible.")
+                .until(ExpectedConditions.visibilityOfAllElements(getItemsTitles()));
+    }
 }

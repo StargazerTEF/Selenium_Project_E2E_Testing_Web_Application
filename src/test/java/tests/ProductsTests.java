@@ -289,4 +289,11 @@ public class ProductsTests extends BasicTest {
         Assert.assertEquals(inventoryPage.getNumberOfItemCards(), 6,
                 "Number of item cards should be 6.");
     }
+
+    @Test(priority = 30, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatItemsTitlesAreVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.waitUntilItemsTitlesAreVisible();
+    }
 }
