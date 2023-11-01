@@ -273,4 +273,10 @@ public class ProductsTests extends BasicTest {
         Assert.assertEquals(inventoryPage.getNumberOfFilterMenuOptions(), 4,
                 "Number of filter menu options should be 4.");
     }
+    @Test(priority = 28, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatItemsArePresent() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.waitUntilItemCardsAreVisible();
+    }
 }

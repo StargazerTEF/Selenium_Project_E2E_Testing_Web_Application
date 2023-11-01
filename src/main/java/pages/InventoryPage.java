@@ -171,4 +171,12 @@ public class InventoryPage extends BasicPage {
     public int getNumberOfFilterMenuOptions() {
         return getFilterMenuOptions().size();
     }
+    public List<WebElement> getItemCards() {
+        return driver.findElements(By.cssSelector("div.inventory_item"));
+    }
+    public void waitUntilItemCardsAreVisible() {
+        wait
+                .withMessage("Item cards should be visible.")
+                .until(ExpectedConditions.visibilityOfAllElements(getItemCards()));
+    }
 }
