@@ -331,4 +331,13 @@ public class ProductsTests extends BasicTest {
         loginPage.loginWIthValidCredentials();
         inventoryPage.waitUntilItemsTitleIsClickableWithIndex(3);
     }
+    @Test(priority = 36, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatItemsTitleIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.waitUntilItemsTitleIsClickableWithIndex(2);
+        inventoryPage.clickOnItemsTitleWithIndex(2);
+        Assert.assertTrue(driver.getCurrentUrl().contains("item"),
+                "User should be redirected to the item page.");
+    }
 }

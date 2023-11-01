@@ -224,4 +224,7 @@ public class InventoryPage extends BasicPage {
                 .withMessage("Item's title with index " + itemsIndex + " should be clickable.")
                 .until(ExpectedConditions.elementToBeClickable(getItemsTitles().get(itemsIndex)));
     }
+    public void clickOnItemsTitleWithIndex(int itemsIndex) {
+        getItemsTitles().get(itemsIndex).click();
+    }
 }
