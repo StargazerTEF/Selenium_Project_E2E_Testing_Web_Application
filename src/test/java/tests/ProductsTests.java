@@ -565,4 +565,15 @@ public class ProductsTests extends BasicTest {
         loginPage.loginWIthValidCredentials();
         footerPage.waitUntilLinkedInIconIsVisible();
     }
+    @Test(priority = 60, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatTwitterButtonIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        footerPage.waitUntilTwitterIconIsVisible();
+        footerPage.clickOnTwitterIcon();
+        footerPage.switchToNewTab();
+        Assert.assertEquals(driver.getCurrentUrl(),
+                "https://twitter.com/saucelabs",
+                "Current url should be 'https://twitter.com/saucelabs'.");
+    }
 }

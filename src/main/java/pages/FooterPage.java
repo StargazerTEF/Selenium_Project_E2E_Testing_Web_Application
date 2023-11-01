@@ -34,4 +34,16 @@ public class FooterPage extends BasicPage {
                 .withMessage("LinkedIn icon in the footer should be visible.")
                 .until(ExpectedConditions.visibilityOf(getLinkedInIcon()));
     }
+    public void clickOnTwitterIcon () {
+        getTwitterIcon().click();
+    }
+    public void switchToNewTab () {
+        String originalWindow = driver.getWindowHandle();
+        for (String windowHandle : driver.getWindowHandles()) {
+            if(!originalWindow.contentEquals(windowHandle)) {
+                driver.switchTo().window(windowHandle);
+            }
+        }
+    }
+
 }
