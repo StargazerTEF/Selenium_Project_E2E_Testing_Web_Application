@@ -429,4 +429,15 @@ public class ProductsTests extends BasicTest {
         inventoryPage.clickOnItemsTitleWithIndex(3);
         itemPage.waitUntilItemsAddToCartButtonIsVisible();
     }
+
+    @Test(priority = 46, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatItemsAddToCartButtonIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnItemsTitleWithIndex(5);
+        itemPage.waitUntilItemsAddToCartButtonIsVisible();
+        itemPage.clickOnItemsAddToCartButton();
+        Assert.assertEquals(headerPage.getNumberOfProductsInCartInt(), 1,
+                "Number of products added to cart should be 1.");
+    }
 }

@@ -42,4 +42,7 @@ public class ItemPage extends BasicPage {
                 .withMessage("Item's add to cart button should be visible.")
                 .until(ExpectedConditions.visibilityOf(getItemsAddToCartButton()));
     }
+    public void clickOnItemsAddToCartButton() {
+        getItemsAddToCartButton().click();
+    }
 }
