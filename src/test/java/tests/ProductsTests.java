@@ -499,4 +499,13 @@ public class ProductsTests extends BasicTest {
         Assert.assertTrue(itemPage.isImageCorrectInItem(0),
                 "Items image is not correct.");
     }
+
+    @Test(priority = 52, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatImagePresentInItem2IsCorrect() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnItemsTitleWithIndex(1);
+        Assert.assertTrue(itemPage.isImageCorrectInItem(1),
+                "Items image is not correct.");
+    }
 }
