@@ -351,4 +351,13 @@ public class ProductsTests extends BasicTest {
         Assert.assertEquals(headerPage.getNumberOfProductsInCartInt(), 1,
                 "Number of products added to the cart should be 1.");
     }
+
+    @Test(priority = 38, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatRemoveButtonIsVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.waitUntilItemsAddToCartButtonsAreVisible();
+        inventoryPage.clickOnAddToCartButtonWithIndex(4);
+        inventoryPage.waitUntilTextInItemsButtonBecomesRemove(4);
+    }
 }

@@ -227,4 +227,9 @@ public class InventoryPage extends BasicPage {
     public void clickOnItemsTitleWithIndex(int itemsIndex) {
         getItemsTitles().get(itemsIndex).click();
     }
+    public void waitUntilTextInItemsButtonBecomesRemove(int itemsIndex) {
+        wait
+                .withMessage("Items text in the button field with index " + itemsIndex + " should be 'Remove'.")
+                .until(ExpectedConditions.textToBePresentInElement(getItemsAddToCardButtonWithIndex(itemsIndex), "Remove"));
+    }
 }
