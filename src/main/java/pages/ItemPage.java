@@ -59,4 +59,23 @@ public class ItemPage extends BasicPage {
     public void clickOnBackToProductsButton() {
         getBackToProductsButton().click();
     }
+    public WebElement getItemsImage() {
+        return driver.findElement(By.cssSelector("img.inventory_details_img"));
+    }
+    public boolean isImageCorrectInItem (int itemsIndex) {
+        if (itemsIndex == 0) {
+            return getItemsImage().getAttribute("src").contains("backpack");
+        } else if (itemsIndex == 1) {
+            return getItemsImage().getAttribute("src").contains("bike-light");
+        } else if (itemsIndex == 2) {
+            return getItemsImage().getAttribute("src").contains("shirt");
+        } else if (itemsIndex == 3) {
+            return getItemsImage().getAttribute("src").contains("pullover");
+        } else if (itemsIndex == 4) {
+            return getItemsImage().getAttribute("src").contains("onesie");
+        } else if (itemsIndex == 5) {
+            return getItemsImage().getAttribute("src").contains("tatt");
+        }
+        return false;
+    }
 }

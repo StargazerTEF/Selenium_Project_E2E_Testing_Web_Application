@@ -490,4 +490,13 @@ public class ProductsTests extends BasicTest {
         Assert.assertEquals(headerPage.getNumberOfProductsInCartInt(), 1,
                 "Number of products added to cart should be 1.");
     }
+
+    @Test(priority = 51, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatImagePresentInItem1IsCorrect() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnItemsTitleWithIndex(0);
+        Assert.assertTrue(itemPage.isImageCorrectInItem(0),
+                "Items image is not correct.");
+    }
 }
