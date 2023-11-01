@@ -601,4 +601,13 @@ public class ProductsTests extends BasicTest {
                 "https://www.linkedin.com/company/sauce-labs/",
                 "Current url should be 'https://www.linkedin.com/company/sauce-labs/'.");
     }
+
+    @Test(priority = 63, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatCopyrightNoticeMessageIsCorrect() {
+
+        loginPage.loginWIthValidCredentials();
+        Assert.assertEquals(footerPage.getCopyRightMessageText(),
+                "© 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy",
+                "Copyright notice message in footer should be '© 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy'.");
+    }
 }
