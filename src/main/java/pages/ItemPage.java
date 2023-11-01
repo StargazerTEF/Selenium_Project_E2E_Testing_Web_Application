@@ -34,4 +34,12 @@ public class ItemPage extends BasicPage {
                 .withMessage("Item's price should be visible.")
                 .until(ExpectedConditions.visibilityOf(getItemsPrice()));
     }
+    public WebElement getItemsAddToCartButton() {
+        return driver.findElement(By.className("btn_inventory"));
+    }
+    public void waitUntilItemsAddToCartButtonIsVisible() {
+        wait
+                .withMessage("Item's add to cart button should be visible.")
+                .until(ExpectedConditions.visibilityOf(getItemsAddToCartButton()));
+    }
 }

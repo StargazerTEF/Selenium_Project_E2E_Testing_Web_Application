@@ -421,4 +421,12 @@ public class ProductsTests extends BasicTest {
         inventoryPage.clickOnItemsTitleWithIndex(0);
         itemPage.waitUntilItemsPriceIsVisible();
     }
+
+    @Test(priority = 45, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatItemsAddToCartButtonIsVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnItemsTitleWithIndex(3);
+        itemPage.waitUntilItemsAddToCartButtonIsVisible();
+    }
 }
