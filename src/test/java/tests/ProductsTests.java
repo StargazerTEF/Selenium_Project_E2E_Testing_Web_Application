@@ -397,4 +397,12 @@ public class ProductsTests extends BasicTest {
         Assert.assertEquals(headerPage.getNumberOfProductsInCartInt(), 1,
                 "Number in the card icon should be 1.");
     }
+
+    @Test(priority = 42, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatItemsTitleIsVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnItemsTitleWithIndex(4);
+        itemPage.waitUntilItemsTitleIsVisible();
+    }
 }
