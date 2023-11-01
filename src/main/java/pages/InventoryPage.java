@@ -232,4 +232,7 @@ public class InventoryPage extends BasicPage {
                 .withMessage("Items text in the button field with index " + itemsIndex + " should be 'Remove'.")
                 .until(ExpectedConditions.textToBePresentInElement(getItemsAddToCardButtonWithIndex(itemsIndex), "Remove"));
     }
+    public void clickOnRemoveButtonWithIndex(int itemsIndex) {
+        getItemsAddToCartButtons().get(itemsIndex).click();
+    }
 }
