@@ -219,4 +219,9 @@ public class InventoryPage extends BasicPage {
                 .withMessage("Items add to cart buttons should be visible.")
                 .until(ExpectedConditions.visibilityOfAllElements(getItemsAddToCartButtons()));
     }
+    public void waitUntilItemsTitleIsClickableWithIndex(int itemsIndex) {
+        wait
+                .withMessage("Item's title with index " + itemsIndex + " should be clickable.")
+                .until(ExpectedConditions.elementToBeClickable(getItemsTitles().get(itemsIndex)));
+    }
 }
