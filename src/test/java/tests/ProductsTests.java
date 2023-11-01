@@ -558,4 +558,11 @@ public class ProductsTests extends BasicTest {
         loginPage.loginWIthValidCredentials();
         footerPage.waitUntilFacebookIconIsVisible();
     }
+
+    @Test(priority = 59, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatLinkedInButtonIsPresent() {
+
+        loginPage.loginWIthValidCredentials();
+        footerPage.waitUntilLinkedInIconIsVisible();
+    }
 }

@@ -26,4 +26,12 @@ public class FooterPage extends BasicPage {
                 .withMessage("Facebook icon should be visible.")
                 .until(ExpectedConditions.visibilityOf(getFacebookIcon()));
     }
+    public WebElement getLinkedInIcon () {
+        return driver.findElement(By.cssSelector(".social_linkedin a"));
+    }
+    public void waitUntilLinkedInIconIsVisible () {
+        wait
+                .withMessage("LinkedIn icon in the footer should be visible.")
+                .until(ExpectedConditions.visibilityOf(getLinkedInIcon()));
+    }
 }
