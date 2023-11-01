@@ -405,11 +405,20 @@ public class ProductsTests extends BasicTest {
         inventoryPage.clickOnItemsTitleWithIndex(4);
         itemPage.waitUntilItemsTitleIsVisible();
     }
+
     @Test(priority = 43, retryAnalyzer = RetryAnalyzer.class)
     public void VerifyThatItemsDescriptionIsVisible() {
 
         loginPage.loginWIthValidCredentials();
         inventoryPage.clickOnItemsTitleWithIndex(1);
         itemPage.waitUntilItemsDescriptionIsVisible();
+    }
+
+    @Test(priority = 44, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatItemsPriceIsVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnItemsTitleWithIndex(0);
+        itemPage.waitUntilItemsPriceIsVisible();
     }
 }

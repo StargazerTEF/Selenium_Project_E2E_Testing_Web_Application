@@ -15,7 +15,7 @@ public class ItemPage extends BasicPage {
     }
     public void waitUntilItemsTitleIsVisible() {
         wait
-                .withMessage("Items title should be visible.")
+                .withMessage("Item's title should be visible.")
                 .until(ExpectedConditions.visibilityOf(getItemsTitle()));
     }
     public WebElement getItemsDescription() {
@@ -23,7 +23,15 @@ public class ItemPage extends BasicPage {
     }
     public void waitUntilItemsDescriptionIsVisible() {
         wait
-                .withMessage("Items description should be visible.")
+                .withMessage("Item's description should be visible.")
                 .until(ExpectedConditions.visibilityOf(getItemsDescription()));
+    }
+    public WebElement getItemsPrice() {
+        return driver.findElement(By.className("inventory_details_price"));
+    }
+    public void waitUntilItemsPriceIsVisible() {
+        wait
+                .withMessage("Item's price should be visible.")
+                .until(ExpectedConditions.visibilityOf(getItemsPrice()));
     }
 }
