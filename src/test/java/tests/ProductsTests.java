@@ -467,6 +467,7 @@ public class ProductsTests extends BasicTest {
         Assert.assertEquals(headerPage.getNumberOfProductsInCart(), "",
                 "Cart should be empty.");
     }
+
     @Test(priority = 49, retryAnalyzer = RetryAnalyzer.class)
     public void VerifyThatItemIsAddedToCartCorrectly() {
 
@@ -476,5 +477,17 @@ public class ProductsTests extends BasicTest {
         itemPage.clickOnItemsAddToCartButton();
         headerPage.clickOnCartIcon();
         cartPage.waitForCartPageToContainAddedProducts();
+    }
+
+    @Test(priority = 50, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatCartIconIsUpdatedWhenItemsAreAddedToTheCart() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnItemsTitleWithIndex(2);
+        itemPage.waitUntilItemsAddToCartButtonIsVisible();
+        itemPage.clickOnItemsAddToCartButton();
+        itemPage.clickOnBackToProductsButton();
+        Assert.assertEquals(headerPage.getNumberOfProductsInCartInt(), 1,
+                "Number of products added to cart should be 1.");
     }
 }

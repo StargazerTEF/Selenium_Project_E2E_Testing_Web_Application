@@ -53,4 +53,10 @@ public class ItemPage extends BasicPage {
     public void clickOnItemsRemoveButton() {
         getItemsAddToCartButton().click();
     }
+    public WebElement getBackToProductsButton() {
+        return driver.findElement(By.id("back-to-products"));
+    }
+    public void clickOnBackToProductsButton() {
+        getBackToProductsButton().click();
+    }
 }
