@@ -18,4 +18,12 @@ public class FooterPage extends BasicPage {
                 .withMessage("Twitter icon should be visible.")
                 .until(ExpectedConditions.visibilityOf(getTwitterIcon()));
     }
+    public WebElement getFacebookIcon () {
+        return driver.findElement(By.cssSelector(".social_facebook a"));
+    }
+    public void waitUntilFacebookIconIsVisible () {
+        wait
+                .withMessage("Facebook icon should be visible.")
+                .until(ExpectedConditions.visibilityOf(getFacebookIcon()));
+    }
 }

@@ -551,4 +551,11 @@ public class ProductsTests extends BasicTest {
         loginPage.loginWIthValidCredentials();
         footerPage.waitUntilTwitterIconIsVisible();
     }
+
+    @Test(priority = 58, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatFacebookButtonIsPresent() {
+
+        loginPage.loginWIthValidCredentials();
+        footerPage.waitUntilFacebookIconIsVisible();
+    }
 }
