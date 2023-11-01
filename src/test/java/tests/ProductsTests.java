@@ -373,4 +373,18 @@ public class ProductsTests extends BasicTest {
         Assert.assertEquals(headerPage.getNumberOfProductsInCart(), "",
                 "Cart should be empty.");
     }
+
+    @Test(priority = 40, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatItemIsAddedToTheCartPageCorrectly() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.waitUntilItemsAddToCartButtonsAreVisible();
+        inventoryPage.clickOnAddToCartButtonWithIndex(5);
+        String titleOfTheItemAddedToTheCart = inventoryPage.getTitleOfTheItemAddedToTheCartWithIndex(5);
+        headerPage.clickOnCartIcon();
+        cartPage.waitForCartPageToContainAddedProducts();
+        Assert.assertEquals(titleOfTheItemAddedToTheCart,
+                cartPage.getTitleTextOfTheItemAddedToTheCartWithIndex(0),
+                "Titles of the items should match.");
+    }
 }

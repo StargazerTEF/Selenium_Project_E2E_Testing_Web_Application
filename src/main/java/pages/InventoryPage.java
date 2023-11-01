@@ -235,4 +235,7 @@ public class InventoryPage extends BasicPage {
     public void clickOnRemoveButtonWithIndex(int itemsIndex) {
         getItemsAddToCartButtons().get(itemsIndex).click();
     }
+    public String getTitleOfTheItemAddedToTheCartWithIndex(int itemsIndex) {
+        return getItemsTitles().get(itemsIndex).getText();
+    }
 }

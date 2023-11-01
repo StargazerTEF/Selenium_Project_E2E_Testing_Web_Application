@@ -11,10 +11,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import pages.HeaderPage;
-import pages.InventoryPage;
-import pages.LeftNavPage;
-import pages.LoginPage;
+import pages.*;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -28,6 +25,7 @@ public abstract class BasicTest {
     protected InventoryPage inventoryPage;
     protected HeaderPage headerPage;
     protected LeftNavPage leftNavPage;
+    protected CartPage cartPage;
 
     @BeforeClass
     public void setup() {
@@ -43,6 +41,7 @@ public abstract class BasicTest {
         headerPage = new HeaderPage(driver, wait);
         loginPage = new LoginPage(driver, wait);
         leftNavPage = new LeftNavPage(driver, wait);
+        cartPage = new CartPage(driver, wait);
     }
 
     @BeforeMethod
