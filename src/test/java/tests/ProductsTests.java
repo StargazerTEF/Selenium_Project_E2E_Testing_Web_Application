@@ -387,4 +387,14 @@ public class ProductsTests extends BasicTest {
                 cartPage.getTitleTextOfTheItemAddedToTheCartWithIndex(0),
                 "Titles of the items should match.");
     }
+
+    @Test(priority = 41, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatCartIconIsUpdatedWithTheNumberItDisplays() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.waitUntilItemsAddToCartButtonsAreVisible();
+        inventoryPage.clickOnAddToCartButtonWithIndex(2);
+        Assert.assertEquals(headerPage.getNumberOfProductsInCartInt(), 1,
+                "Number in the card icon should be 1.");
+    }
 }
