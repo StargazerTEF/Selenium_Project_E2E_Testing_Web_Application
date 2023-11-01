@@ -45,4 +45,9 @@ public class ItemPage extends BasicPage {
     public void clickOnItemsAddToCartButton() {
         getItemsAddToCartButton().click();
     }
+    public void waitUntilItemsButtonTextBecomesRemove() {
+        wait
+                .withMessage("Item's button text should be 'Remove'.")
+                .until(ExpectedConditions.textToBePresentInElement(getItemsAddToCartButton(), "Remove"));
+    }
 }
