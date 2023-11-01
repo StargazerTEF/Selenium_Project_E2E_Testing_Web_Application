@@ -206,4 +206,12 @@ public class InventoryPage extends BasicPage {
                 .withMessage("Items prices should be visible.")
                 .until(ExpectedConditions.visibilityOfAllElements(getItemsPrices()));
     }
+    public List<WebElement> getItemsImages() {
+        return driver.findElements(By.cssSelector("img.inventory_item_img"));
+    }
+    public void waitUntilItemsImagesAreVisible() {
+        wait
+                .withMessage("Items images should be visible.")
+                .until(ExpectedConditions.visibilityOfAllElements(getItemsImages()));
+    }
 }

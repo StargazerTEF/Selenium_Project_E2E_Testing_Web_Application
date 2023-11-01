@@ -310,4 +310,11 @@ public class ProductsTests extends BasicTest {
         loginPage.loginWIthValidCredentials();
         inventoryPage.waitUntilItemsPricesAreVisible();
     }
+
+    @Test(priority = 33, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatItemsImagesAreVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.waitUntilItemsImagesAreVisible();
+    }
 }
