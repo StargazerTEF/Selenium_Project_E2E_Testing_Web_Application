@@ -179,4 +179,7 @@ public class InventoryPage extends BasicPage {
                 .withMessage("Item cards should be visible.")
                 .until(ExpectedConditions.visibilityOfAllElements(getItemCards()));
     }
+    public int getNumberOfItemCards() {
+        return getItemCards().size();
+    }
 }

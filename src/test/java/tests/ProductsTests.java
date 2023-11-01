@@ -273,10 +273,20 @@ public class ProductsTests extends BasicTest {
         Assert.assertEquals(inventoryPage.getNumberOfFilterMenuOptions(), 4,
                 "Number of filter menu options should be 4.");
     }
+
     @Test(priority = 28, retryAnalyzer = RetryAnalyzer.class)
     public void VerifyThatItemsArePresent() {
 
         loginPage.loginWIthValidCredentials();
         inventoryPage.waitUntilItemCardsAreVisible();
+    }
+
+    @Test(priority = 29, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyTheTotalNumberOfItems() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.waitUntilItemCardsAreVisible();
+        Assert.assertEquals(inventoryPage.getNumberOfItemCards(), 6,
+                "Number of item cards should be 6.");
     }
 }
