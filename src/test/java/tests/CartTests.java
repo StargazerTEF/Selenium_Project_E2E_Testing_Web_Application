@@ -129,4 +129,16 @@ public class CartTests extends BasicTest {
         Assert.assertTrue(leftNavPage.checkSpellingOfAllOptionsInBurgerMenu(),
                 "Spelling of elements in burger menu is not valid.");
     }
+
+    @Test(priority = 14, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatAllItemsOptionFromBurgerMenuIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        headerPage.clickOnBurgerMenuButton();
+        leftNavPage.waitUntilBurgerMenuOptionsBecomeVisible();
+        leftNavPage.clickOnAllItemsLink();
+        Assert.assertEquals(inventoryPage.getSubTitleText(), "Products",
+                "User should be redirected to the inventory page.");
+    }
 }
