@@ -141,4 +141,17 @@ public class CartTests extends BasicTest {
         Assert.assertEquals(inventoryPage.getSubTitleText(), "Products",
                 "User should be redirected to the inventory page.");
     }
+
+    @Test(priority = 15, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatAboutOptionFromLeftNavigationMenuIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        headerPage.clickOnBurgerMenuButton();
+        leftNavPage.waitUntilBurgerMenuOptionsBecomeVisible();
+        leftNavPage.clickOnAboutLink();
+        Assert.assertEquals(driver.getCurrentUrl(),
+                "https://saucelabs.com/",
+                "User should be redirected to the Sauce Labs Website.");
+    }
 }
