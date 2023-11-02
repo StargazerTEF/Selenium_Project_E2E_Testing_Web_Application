@@ -107,4 +107,15 @@ public class CartTests extends BasicTest {
         Assert.assertEquals(cartPage.getSubHeaderTitleText(), "Your Cart",
                 "Sub header title should be 'Your Cart'.");
     }
+
+    @Test(priority = 12, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyTotalNumberOfOptionsInBurgerMenu() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        headerPage.clickOnBurgerMenuButton();
+        leftNavPage.waitUntilBurgerMenuOptionsBecomeVisible();
+        Assert.assertEquals(leftNavPage.getNumberOfBurgerMenuOptions(), 4,
+                "Burger menu should contain 4 options.");
+    }
 }
