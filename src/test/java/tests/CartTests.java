@@ -350,4 +350,12 @@ public class CartTests extends BasicTest {
         headerPage.clickOnCartIcon();
         footerPage.waitUntilFacebookIconIsVisible();
     }
+
+    @Test(priority = 35, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatLinkedInIconIsVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        footerPage.waitUntilLinkedInIconIsVisible();
+    }
 }
