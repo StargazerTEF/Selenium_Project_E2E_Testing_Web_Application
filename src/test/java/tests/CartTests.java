@@ -143,7 +143,7 @@ public class CartTests extends BasicTest {
     }
 
     @Test(priority = 15, retryAnalyzer = RetryAnalyzer.class)
-    public void VerifyThatAboutOptionFromLeftNavigationMenuIsWorking() {
+    public void VerifyThatAboutOptionFromBurgerMenuIsWorking() {
 
         loginPage.loginWIthValidCredentials();
         headerPage.clickOnCartIcon();
@@ -153,5 +153,17 @@ public class CartTests extends BasicTest {
         Assert.assertEquals(driver.getCurrentUrl(),
                 "https://saucelabs.com/",
                 "User should be redirected to the Sauce Labs Website.");
+    }
+
+    @Test(priority = 16, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatLogoutOptionFromBurgerMenuIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        headerPage.clickOnBurgerMenuButton();
+        leftNavPage.waitUntilBurgerMenuOptionsBecomeVisible();
+        leftNavPage.clickOnLogoutButton();
+        Assert.assertTrue(loginPage.doesUsernameFieldExist(),
+                "User should be redirected to the login page.");
     }
 }
