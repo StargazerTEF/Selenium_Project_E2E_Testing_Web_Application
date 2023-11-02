@@ -92,4 +92,12 @@ public class CartPage extends BasicPage {
     public void clickOnRemoveButtonWithIndex(int itemsIndex) {
         getItemsRemoveButtons().get(itemsIndex).click();
     }
+    public WebElement getContinueShoppingButton () {
+        return driver.findElement(By.id("continue-shopping"));
+    }
+    public void waitUntilContinueShoppingButtonIsVisible () {
+        wait
+                .withMessage("'Continue Shopping' button should be visible on the page.")
+                .until(ExpectedConditions.visibilityOf(getContinueShoppingButton()));
+    }
 }

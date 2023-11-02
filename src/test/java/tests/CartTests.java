@@ -278,6 +278,7 @@ public class CartTests extends BasicTest {
         headerPage.clickOnCartIcon();
         cartPage.waitUntilRemoveButtonIsVisibleWIthIndex(0);
     }
+
     @Test(priority = 28, retryAnalyzer = RetryAnalyzer.class)
     public void VerifyThatRemoveButtonIsWorking() {
 
@@ -290,5 +291,14 @@ public class CartTests extends BasicTest {
         cartPage.clickOnRemoveButtonWithIndex(0);
         Assert.assertEquals(headerPage.getNumberOfProductsInCart(), "",
                 "Cart should be empty.");
+    }
+
+    @Test(priority = 29, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatContinueShoppingButtonIsVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(0);
+        headerPage.clickOnCartIcon();
+        cartPage.waitUntilContinueShoppingButtonIsVisible();
     }
 }
