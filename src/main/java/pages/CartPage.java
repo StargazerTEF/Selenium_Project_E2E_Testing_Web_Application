@@ -78,4 +78,7 @@ public class CartPage extends BasicPage {
                 .withMessage("Items title should be clickable.")
                 .until(ExpectedConditions.elementToBeClickable(getTitleOfProductAddedToTheCartWithIndex(indexOfProduct)));
     }
+    public void clickOnItemsTitle (int indexOfProduct) {
+        getTitleOfProductAddedToTheCartWithIndex(indexOfProduct).click();
+    }
 }

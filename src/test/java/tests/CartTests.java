@@ -257,4 +257,16 @@ public class CartTests extends BasicTest {
         headerPage.clickOnCartIcon();
         cartPage.waitUntilItemsTitleIsClickable(0);
     }
+
+    @Test(priority = 26, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatItemsTitleIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(3);
+        headerPage.clickOnCartIcon();
+        cartPage.waitUntilItemsTitleIsClickable(0);
+        cartPage.clickOnItemsTitle(0);
+        Assert.assertTrue(driver.getCurrentUrl().contains("item"),
+                "Current url should contain 'item'.");
+    }
 }
