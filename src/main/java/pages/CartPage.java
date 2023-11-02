@@ -89,4 +89,7 @@ public class CartPage extends BasicPage {
                 .withMessage("Remove button with index " + itemsIndex + " should be visible on the page.")
                 .until(ExpectedConditions.visibilityOf(getItemsRemoveButtons().get(itemsIndex)));
     }
+    public void clickOnRemoveButtonWithIndex(int itemsIndex) {
+        getItemsRemoveButtons().get(itemsIndex).click();
+    }
 }

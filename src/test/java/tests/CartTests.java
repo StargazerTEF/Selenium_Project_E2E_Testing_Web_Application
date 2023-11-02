@@ -278,4 +278,17 @@ public class CartTests extends BasicTest {
         headerPage.clickOnCartIcon();
         cartPage.waitUntilRemoveButtonIsVisibleWIthIndex(0);
     }
+    @Test(priority = 28, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatRemoveButtonIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(1);
+        headerPage.clickOnCartIcon();
+        Assert.assertEquals(headerPage.getNumberOfProductsInCartInt(), 1,
+                "Number of products in cart should be 1.");
+        cartPage.waitUntilRemoveButtonIsVisibleWIthIndex(0);
+        cartPage.clickOnRemoveButtonWithIndex(0);
+        Assert.assertEquals(headerPage.getNumberOfProductsInCart(), "",
+                "Cart should be empty.");
+    }
 }
