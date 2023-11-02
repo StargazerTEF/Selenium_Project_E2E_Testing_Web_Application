@@ -203,6 +203,7 @@ public class CartTests extends BasicTest {
         leftNavPage.clickOnExitButton();
         leftNavPage.waitUntilBurgerMenuOptionsBecomeInvisible();
     }
+
     @Test(priority = 20, retryAnalyzer = RetryAnalyzer.class)
     public void VerifyThatItemsAddedToTheCartAreVisible() {
 
@@ -210,5 +211,13 @@ public class CartTests extends BasicTest {
         inventoryPage.clickOnAddToCartButtonWithIndex(3);
         headerPage.clickOnCartIcon();
         cartPage.waitForCartPageToContainAddedProducts();
+    }
+    @Test(priority = 21, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatItemsTitleAddedToTheCartIsVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(2);
+        headerPage.clickOnCartIcon();
+        cartPage.waitForAddedProductsTitlesToBeVisibleOnThePage();
     }
 }
