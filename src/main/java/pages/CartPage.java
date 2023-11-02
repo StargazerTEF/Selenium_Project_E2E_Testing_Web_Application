@@ -103,4 +103,12 @@ public class CartPage extends BasicPage {
     public void clickOnContinueShoppingButton () {
         getContinueShoppingButton().click();
     }
+    public WebElement getCheckoutButton () {
+        return driver.findElement(By.id("checkout"));
+    }
+    public void waitUntilCheckoutButtonIsVisible () {
+        wait
+                .withMessage("'Checkout' button should be visible on the page.")
+                .until(ExpectedConditions.visibilityOf(getCheckoutButton()));
+    }
 }

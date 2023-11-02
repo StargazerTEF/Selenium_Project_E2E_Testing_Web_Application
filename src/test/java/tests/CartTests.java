@@ -313,4 +313,13 @@ public class CartTests extends BasicTest {
         Assert.assertEquals(inventoryPage.getSubTitleText(), "Products",
                 "User should be redirected to the inventory page.");
     }
+
+    @Test(priority = 31, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatCheckoutButtonIsVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(3);
+        headerPage.clickOnCartIcon();
+        cartPage.waitUntilCheckoutButtonIsVisible();
+    }
 }
