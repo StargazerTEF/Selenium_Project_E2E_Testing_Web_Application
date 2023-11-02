@@ -301,4 +301,16 @@ public class CartTests extends BasicTest {
         headerPage.clickOnCartIcon();
         cartPage.waitUntilContinueShoppingButtonIsVisible();
     }
+
+    @Test(priority = 30, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatContinueShoppingButtonIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(5);
+        headerPage.clickOnCartIcon();
+        cartPage.waitUntilContinueShoppingButtonIsVisible();
+        cartPage.clickOnContinueShoppingButton();
+        Assert.assertEquals(inventoryPage.getSubTitleText(), "Products",
+                "User should be redirected to the inventory page.");
+    }
 }

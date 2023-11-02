@@ -100,4 +100,7 @@ public class CartPage extends BasicPage {
                 .withMessage("'Continue Shopping' button should be visible on the page.")
                 .until(ExpectedConditions.visibilityOf(getContinueShoppingButton()));
     }
+    public void clickOnContinueShoppingButton () {
+        getContinueShoppingButton().click();
+    }
 }
