@@ -166,4 +166,21 @@ public class CartTests extends BasicTest {
         Assert.assertTrue(loginPage.doesUsernameFieldExist(),
                 "User should be redirected to the login page.");
     }
+
+    @Test(priority = 17, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatResetAppOptionFromBurgerMenuIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.waitUntilItemsAddToCartButtonsAreVisible();
+        inventoryPage.clickOnAddToCartButtonWithIndex(0);
+        Assert.assertEquals(headerPage.getNumberOfProductsInCartInt(), 1,
+                "Number of products in cart should be 1.");
+        headerPage.clickOnCartIcon();
+        cartPage.waitForCartPageToContainAddedProducts();
+        headerPage.clickOnBurgerMenuButton();
+        leftNavPage.waitUntilBurgerMenuOptionsBecomeVisible();
+        leftNavPage.clickOnResetAppButton();
+        Assert.assertEquals(headerPage.getNumberOfProductsInCart(), "",
+                "Cart should be empty.");
+    }
 }
