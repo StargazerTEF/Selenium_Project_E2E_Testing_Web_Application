@@ -70,4 +70,12 @@ public class CartPage extends BasicPage {
                 .withMessage("Quantities of added products should be visible on the page.")
                 .until(ExpectedConditions.visibilityOfAllElements(getQuantityOfProductsAddedToTheCart()));
     }
+    public WebElement getTitleOfProductAddedToTheCartWithIndex(int indexOfProduct) {
+        return getTitlesOfProductsAddedToTheCart().get(indexOfProduct);
+    }
+    public void waitUntilItemsTitleIsClickable (int indexOfProduct) {
+        wait
+                .withMessage("Items title should be clickable.")
+                .until(ExpectedConditions.elementToBeClickable(getTitleOfProductAddedToTheCartWithIndex(indexOfProduct)));
+    }
 }

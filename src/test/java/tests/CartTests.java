@@ -248,4 +248,13 @@ public class CartTests extends BasicTest {
         headerPage.clickOnCartIcon();
         cartPage.waitForAddedProductsQuantityToBeVisibleOnThePage();
     }
+
+    @Test(priority = 25, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatItemsTitleIsClickable() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(1);
+        headerPage.clickOnCartIcon();
+        cartPage.waitUntilItemsTitleIsClickable(0);
+    }
 }
