@@ -71,6 +71,7 @@ public class CartTests extends BasicTest {
         Assert.assertTrue(headerPage.getCartIcon().isEnabled(),
                 "Cart icon should be enabled on the page.");
     }
+
     @Test(priority = 8, retryAnalyzer = RetryAnalyzer.class)
     public void VerifyThatBurgerMenuButtonIsWorking() {
 
@@ -78,5 +79,14 @@ public class CartTests extends BasicTest {
         headerPage.clickOnCartIcon();
         headerPage.clickOnBurgerMenuButton();
         leftNavPage.waitUntilBurgerMenuOptionsBecomeVisible();
+    }
+
+    @Test(priority = 9, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatCartIconIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        Assert.assertTrue(driver.getCurrentUrl().contains("cart"),
+                "Current url should contain 'cart'.");
     }
 }
