@@ -212,6 +212,7 @@ public class CartTests extends BasicTest {
         headerPage.clickOnCartIcon();
         cartPage.waitForCartPageToContainAddedProducts();
     }
+
     @Test(priority = 21, retryAnalyzer = RetryAnalyzer.class)
     public void VerifyThatItemsTitleAddedToTheCartIsVisible() {
 
@@ -219,5 +220,14 @@ public class CartTests extends BasicTest {
         inventoryPage.clickOnAddToCartButtonWithIndex(2);
         headerPage.clickOnCartIcon();
         cartPage.waitForAddedProductsTitlesToBeVisibleOnThePage();
+    }
+
+    @Test(priority = 22, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatItemsDescriptionAddedToTheCartIsVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(5);
+        headerPage.clickOnCartIcon();
+        cartPage.waitForAddedProductsDescriptionsToBeVisibleOnThePage();
     }
 }
