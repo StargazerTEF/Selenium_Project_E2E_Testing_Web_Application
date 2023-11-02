@@ -334,4 +334,12 @@ public class CartTests extends BasicTest {
         Assert.assertTrue(driver.getCurrentUrl().contains("checkout"),
                 "Current url should contain 'checkout'.");
     }
+
+    @Test(priority = 33, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatTwitterIconIsVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        footerPage.waitUntilTwitterIconIsVisible();
+    }
 }
