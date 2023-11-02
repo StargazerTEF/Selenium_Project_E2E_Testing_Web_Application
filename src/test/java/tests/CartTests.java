@@ -358,4 +358,16 @@ public class CartTests extends BasicTest {
         headerPage.clickOnCartIcon();
         footerPage.waitUntilLinkedInIconIsVisible();
     }
+
+    @Test(priority = 36, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatTwitterIconIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        footerPage.waitUntilTwitterIconIsVisible();
+        footerPage.clickOnTwitterIcon();
+        footerPage.switchToNewTab();
+        Assert.assertTrue(driver.getCurrentUrl().contains("twitter"),
+                "Current url should contain 'twitter'.");
+    }
 }
