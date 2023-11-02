@@ -322,4 +322,16 @@ public class CartTests extends BasicTest {
         headerPage.clickOnCartIcon();
         cartPage.waitUntilCheckoutButtonIsVisible();
     }
+
+    @Test(priority = 32, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatCheckoutButtonIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(4);
+        headerPage.clickOnCartIcon();
+        cartPage.waitUntilCheckoutButtonIsVisible();
+        cartPage.clickOnCheckoutButton();
+        Assert.assertTrue(driver.getCurrentUrl().contains("checkout"),
+                "Current url should contain 'checkout'.");
+    }
 }

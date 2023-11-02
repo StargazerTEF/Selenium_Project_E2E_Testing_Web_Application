@@ -111,4 +111,7 @@ public class CartPage extends BasicPage {
                 .withMessage("'Checkout' button should be visible on the page.")
                 .until(ExpectedConditions.visibilityOf(getCheckoutButton()));
     }
+    public void clickOnCheckoutButton () {
+        getCheckoutButton().click();
+    }
 }
