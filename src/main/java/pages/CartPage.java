@@ -81,4 +81,12 @@ public class CartPage extends BasicPage {
     public void clickOnItemsTitle (int indexOfProduct) {
         getTitleOfProductAddedToTheCartWithIndex(indexOfProduct).click();
     }
+    public List<WebElement> getItemsRemoveButtons() {
+        return driver.findElements(By.className("cart_button"));
+    }
+    public void waitUntilRemoveButtonIsVisibleWIthIndex (int itemsIndex) {
+        wait
+                .withMessage("Remove button with index " + itemsIndex + " should be visible on the page.")
+                .until(ExpectedConditions.visibilityOf(getItemsRemoveButtons().get(itemsIndex)));
+    }
 }

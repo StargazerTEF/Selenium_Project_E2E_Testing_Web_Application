@@ -269,4 +269,13 @@ public class CartTests extends BasicTest {
         Assert.assertTrue(driver.getCurrentUrl().contains("item"),
                 "Current url should contain 'item'.");
     }
+
+    @Test(priority = 27, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatRemoveButtonIsVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(2);
+        headerPage.clickOnCartIcon();
+        cartPage.waitUntilRemoveButtonIsVisibleWIthIndex(0);
+    }
 }
