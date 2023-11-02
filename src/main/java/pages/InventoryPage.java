@@ -23,11 +23,11 @@ public class InventoryPage extends BasicPage {
     public List<WebElement> getItemsAddToCartButtons() {
         return driver.findElements(By.className("btn_inventory"));
     }
-    public WebElement getItemsAddToCardButtonWithIndex(int itemsIndex) {
+    public WebElement getItemsAddToCartButtonWithIndex(int itemsIndex) {
         return getItemsAddToCartButtons().get(itemsIndex);
     }
     public void clickOnAddToCartButtonWithIndex(int itemsIndex) {
-        getItemsAddToCardButtonWithIndex(itemsIndex).click();
+        getItemsAddToCartButtonWithIndex(itemsIndex).click();
     }
     public WebElement getSubTitle() {
         return driver.findElement(By.cssSelector("span.title"));
@@ -230,7 +230,7 @@ public class InventoryPage extends BasicPage {
     public void waitUntilTextInItemsButtonBecomesRemove(int itemsIndex) {
         wait
                 .withMessage("Items text in the button field with index " + itemsIndex + " should be 'Remove'.")
-                .until(ExpectedConditions.textToBePresentInElement(getItemsAddToCardButtonWithIndex(itemsIndex), "Remove"));
+                .until(ExpectedConditions.textToBePresentInElement(getItemsAddToCartButtonWithIndex(itemsIndex), "Remove"));
     }
     public void clickOnRemoveButtonWithIndex(int itemsIndex) {
         getItemsAddToCartButtons().get(itemsIndex).click();

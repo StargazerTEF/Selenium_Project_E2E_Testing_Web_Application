@@ -203,4 +203,12 @@ public class CartTests extends BasicTest {
         leftNavPage.clickOnExitButton();
         leftNavPage.waitUntilBurgerMenuOptionsBecomeInvisible();
     }
+    @Test(priority = 20, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatItemsAddedToTheCartAreVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(3);
+        headerPage.clickOnCartIcon();
+        cartPage.waitForCartPageToContainAddedProducts();
+    }
 }
