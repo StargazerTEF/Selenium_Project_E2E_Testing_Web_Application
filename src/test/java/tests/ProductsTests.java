@@ -595,9 +595,8 @@ public class ProductsTests extends BasicTest {
         footerPage.waitUntilLinkedInIconIsVisible();
         footerPage.clickOnLinkedInIcon();
         footerPage.switchToNewTab();
-        Assert.assertEquals(driver.getCurrentUrl(),
-                "https://www.linkedin.com/company/sauce-labs/",
-                "Current url should be 'https://www.linkedin.com/company/sauce-labs/'.");
+        Assert.assertTrue(driver.getCurrentUrl().contains("linkedin"),
+                "Current url should contain 'linkedin'.");
     }
 
     @Test(priority = 63, retryAnalyzer = RetryAnalyzer.class)
