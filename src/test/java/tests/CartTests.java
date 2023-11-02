@@ -15,4 +15,15 @@ public class CartTests extends BasicTest {
                 baseUrl + "cart.html",
                 "Current url should be " + baseUrl + "cart.html");
     }
+
+    @Test(priority = 2, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyTheTitle() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(4);
+        headerPage.clickOnCartIcon();
+        cartPage.waitForCartPageToContainAddedProducts();
+        Assert.assertEquals(driver.getTitle(), "Swag Labs",
+                "Title should be 'Swag Labs'.");
+    }
 }
