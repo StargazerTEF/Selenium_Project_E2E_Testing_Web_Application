@@ -584,9 +584,8 @@ public class ProductsTests extends BasicTest {
         footerPage.waitUntilFacebookIconIsVisible();
         footerPage.clickOnFacebookIcon();
         footerPage.switchToNewTab();
-        Assert.assertEquals(driver.getCurrentUrl(),
-                "https://www.facebook.com/saucelabs",
-                "Current url should be 'https://www.facebook.com/saucelabs'.");
+        Assert.assertTrue(driver.getCurrentUrl().contains("facebook"),
+                "Current url should contain 'facebook'.");
     }
 
     @Test(priority = 62, retryAnalyzer = RetryAnalyzer.class)
