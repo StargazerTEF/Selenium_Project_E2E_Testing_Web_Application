@@ -98,4 +98,13 @@ public class CartTests extends BasicTest {
         Assert.assertEquals(headerPage.getNumberOfProductsInCart(), "",
                 "Cart should be empty.");
     }
+
+    @Test(priority = 11, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyTheSubHeaderTitle() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        Assert.assertEquals(cartPage.getSubHeaderTitleText(), "Your Cart",
+                "Sub header title should be 'Your Cart'.");
+    }
 }
