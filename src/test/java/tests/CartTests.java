@@ -53,6 +53,7 @@ public class CartTests extends BasicTest {
         Assert.assertTrue(headerPage.doesCartIconExist(),
                 "Cart icon should exist on the page.");
     }
+
     @Test(priority = 6, retryAnalyzer = RetryAnalyzer.class)
     public void VerifyThatBurgerMenuButtonIsEnabled() {
 
@@ -60,5 +61,14 @@ public class CartTests extends BasicTest {
         headerPage.clickOnCartIcon();
         Assert.assertTrue(headerPage.getBurgerMenuButton().isEnabled(),
                 "Burger menu button should be enabled on the page.");
+    }
+
+    @Test(priority = 7, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatCartIconIsEnabled() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        Assert.assertTrue(headerPage.getCartIcon().isEnabled(),
+                "Cart icon should be enabled on the page.");
     }
 }
