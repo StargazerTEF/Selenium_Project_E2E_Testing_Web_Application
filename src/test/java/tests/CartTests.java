@@ -89,4 +89,13 @@ public class CartTests extends BasicTest {
         Assert.assertTrue(driver.getCurrentUrl().contains("cart"),
                 "Current url should contain 'cart'.");
     }
+
+    @Test(priority = 10, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatCartIconHasCorrectNumberOfAddedProducts() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        Assert.assertEquals(headerPage.getNumberOfProductsInCart(), "",
+                "Cart should be empty.");
+    }
 }
