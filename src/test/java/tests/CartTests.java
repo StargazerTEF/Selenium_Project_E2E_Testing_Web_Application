@@ -370,4 +370,16 @@ public class CartTests extends BasicTest {
         Assert.assertTrue(driver.getCurrentUrl().contains("twitter"),
                 "Current url should contain 'twitter'.");
     }
+
+    @Test(priority = 37, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatFacebookIconIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        footerPage.waitUntilFacebookIconIsVisible();
+        footerPage.clickOnFacebookIcon();
+        footerPage.switchToNewTab();
+        Assert.assertTrue(driver.getCurrentUrl().contains("facebook"),
+                "Current url should contain 'facebook'.");
+    }
 }
