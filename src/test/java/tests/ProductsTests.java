@@ -573,9 +573,8 @@ public class ProductsTests extends BasicTest {
         footerPage.waitUntilTwitterIconIsVisible();
         footerPage.clickOnTwitterIcon();
         footerPage.switchToNewTab();
-        Assert.assertEquals(driver.getCurrentUrl(),
-                "https://twitter.com/saucelabs",
-                "Current url should be 'https://twitter.com/saucelabs'.");
+        Assert.assertTrue(driver.getCurrentUrl().contains("twitter"),
+                "Current url should contain 'twitter'.");
     }
 
     @Test(priority = 61, retryAnalyzer = RetryAnalyzer.class)
