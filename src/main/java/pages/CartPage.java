@@ -26,4 +26,10 @@ public class CartPage extends BasicPage {
     public String getTitleTextOfTheItemAddedToTheCartWithIndex(int itemsIndex) {
         return getTitleOfItemAddedToTheCartWithIndex(0).getText();
     }
+    public WebElement getHeaderTitle () {
+        return driver.findElement(By.className("app_logo"));
+    }
+    public String getHeaderTitleText () {
+        return getHeaderTitle().getText();
+    }
 }

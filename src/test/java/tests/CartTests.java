@@ -26,4 +26,13 @@ public class CartTests extends BasicTest {
         Assert.assertEquals(driver.getTitle(), "Swag Labs",
                 "Title should be 'Swag Labs'.");
     }
+
+    @Test(priority = 3, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyTheTitleInHeader() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        Assert.assertEquals(cartPage.getHeaderTitleText(), "Swag Labs",
+                "Title in the header should be 'Swag Labs'.");
+    }
 }
