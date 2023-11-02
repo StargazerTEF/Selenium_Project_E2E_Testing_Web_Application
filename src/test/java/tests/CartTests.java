@@ -230,4 +230,13 @@ public class CartTests extends BasicTest {
         headerPage.clickOnCartIcon();
         cartPage.waitForAddedProductsDescriptionsToBeVisibleOnThePage();
     }
+
+    @Test(priority = 23, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatItemsPriceAddedToTheCartIsVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(0);
+        headerPage.clickOnCartIcon();
+        cartPage.waitForAddedProductsPricesToBeVisibleOnThePage();
+    }
 }

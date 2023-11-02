@@ -54,4 +54,12 @@ public class CartPage extends BasicPage {
                 .withMessage("Descriptions of added products should be visible on the page.")
                 .until(ExpectedConditions.visibilityOfAllElements(getDescriptionsOfProductsAddedToTheCart()));
     }
+    public List<WebElement> getPricesOfProductsAddedToTheCart () {
+        return driver.findElements(By.className("inventory_item_price"));
+    }
+    public void waitForAddedProductsPricesToBeVisibleOnThePage () {
+        wait
+                .withMessage("Prices of added products should be visible on the page.")
+                .until(ExpectedConditions.visibilityOfAllElements(getPricesOfProductsAddedToTheCart()));
+    }
 }
