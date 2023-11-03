@@ -377,4 +377,17 @@ public class PaymentTests extends BasicTest {
         Assert.assertEquals(paymentPage.getPaymentInformationText(), "Payment Information",
                 "Payment information isn't spelled correctly.");
     }
+
+    @Test(priority = 29, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyTheShippingInformation() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(1);
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        Assert.assertEquals(paymentPage.getShippingInformationText(), "Shipping Information",
+                "Shipping information isn't spelled correctly.");
+    }
 }

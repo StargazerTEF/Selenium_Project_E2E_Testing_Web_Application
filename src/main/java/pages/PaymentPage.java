@@ -81,4 +81,10 @@ public class PaymentPage extends BasicPage{
     public String getPaymentInformationText () {
         return getPaymentInformation().getText();
     }
+    public WebElement getShippingInformation () {
+        return driver.findElement(By.cssSelector(".summary_info > div:nth-child(3)"));
+    }
+    public String getShippingInformationText () {
+        return getShippingInformation().getText();
+    }
 }
