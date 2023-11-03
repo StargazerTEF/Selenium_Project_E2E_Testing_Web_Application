@@ -454,6 +454,7 @@ public class ConfirmationTests extends BasicTest {
     public void VerifyThatFacebookIconIsWorking() {
 
         loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(1);
         headerPage.clickOnCartIcon();
         cartPage.clickOnCheckoutButton();
         checkoutPage.fillOutCheckoutFormWithValidInputs();
