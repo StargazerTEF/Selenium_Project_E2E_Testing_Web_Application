@@ -270,4 +270,15 @@ public class CheckoutTests extends BasicTest {
         Assert.assertTrue(checkoutPage.getLastNameField().isEnabled(),
                 "Last name field should be enabled.");
     }
+
+    @Test(priority = 25, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatZipCodeFieldIsEnabled() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.waitUntilZipCodeFieldIsVisible();
+        Assert.assertTrue(checkoutPage.getZipCodeField().isEnabled(),
+                "Zip code field should be enabled.");
+    }
 }
