@@ -75,4 +75,10 @@ public class PaymentPage extends BasicPage{
     public void clickOnItemsTitle (int indexOfProduct) {
         getTitleOfProductAddedToTheCartWithIndex(indexOfProduct).click();
     }
+    public WebElement getPaymentInformation () {
+        return driver.findElement(By.cssSelector(".summary_info > div:nth-child(1)"));
+    }
+    public String getPaymentInformationText () {
+        return getPaymentInformation().getText();
+    }
 }

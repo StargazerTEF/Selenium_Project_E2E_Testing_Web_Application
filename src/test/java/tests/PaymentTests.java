@@ -364,4 +364,17 @@ public class PaymentTests extends BasicTest {
         Assert.assertTrue(driver.getCurrentUrl().contains("item"),
                 "User should be redirected to the item page.");
     }
+
+    @Test(priority = 28, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThePaymentInformation() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(4);
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        Assert.assertEquals(paymentPage.getPaymentInformationText(), "Payment Information",
+                "Payment information isn't spelled correctly.");
+    }
 }
