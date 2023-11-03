@@ -256,4 +256,21 @@ public class ConfirmationTests extends BasicTest {
         Assert.assertTrue(loginPage.doesUsernameFieldExist(),
                 "User should be redirected to the login page.");
     }
+
+    @Test(priority = 17, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatResetAppOptionFromLeftNavigationMenuIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(0);
+        Assert.assertEquals(headerPage.getNumberOfProductsInCartInt(), 1,
+                "Number of products in cart should be 1.");
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.clickOnFinishButton();
+        headerPage.clickOnBurgerMenuButton();
+        leftNavPage.waitUntilBurgerMenuOptionsBecomeVisible();
+        leftNavPage.clickOnResetAppButton();
+    }
 }
