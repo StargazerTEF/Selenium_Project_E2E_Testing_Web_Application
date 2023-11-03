@@ -16,4 +16,15 @@ public class CheckoutTests extends BasicTest {
                 baseUrl + "checkout-step-one.html",
                 "Current url should be " + baseUrl + "checkout-step-one.html");
     }
+
+    @Test(priority = 2, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThePageTitle() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        Assert.assertEquals(driver.getTitle(),
+                "Swag Labs",
+                "Title of the page should be 'Swag Labs'.");
+    }
 }
