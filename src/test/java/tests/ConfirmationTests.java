@@ -305,4 +305,18 @@ public class ConfirmationTests extends BasicTest {
         leftNavPage.clickOnExitButton();
         leftNavPage.waitUntilBurgerMenuOptionsBecomeInvisible();
     }
+
+    @Test(priority = 20, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatImageInConfirmationMessageIsVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(1);
+        headerPage.clickOnCartIcon();
+        cartPage.waitForCartPageToContainAddedProducts();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.clickOnFinishButton();
+        confirmationPage.waitUntilConfirmationMessageImageIsVisible();
+    }
 }

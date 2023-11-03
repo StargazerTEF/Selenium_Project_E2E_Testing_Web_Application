@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ConfirmationPage extends BasicPage {
@@ -20,5 +21,13 @@ public class ConfirmationPage extends BasicPage {
     }
     public String getSubHeaderTitleText() {
         return getSubHeaderTitle().getText();
+    }
+    public WebElement getConfirmationMessageImage() {
+        return driver.findElement(By.cssSelector("#checkout_complete_container > img"));
+    }
+    public void waitUntilConfirmationMessageImageIsVisible() {
+        wait
+                .withMessage("Confirmation message image should be visible.")
+                .until(ExpectedConditions.visibilityOf(getConfirmationMessageImage()));
     }
 }
