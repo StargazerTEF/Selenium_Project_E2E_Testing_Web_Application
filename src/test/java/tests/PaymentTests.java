@@ -233,4 +233,16 @@ public class PaymentTests extends BasicTest {
         Assert.assertEquals(headerPage.getNumberOfProductsInCart(), "",
                 "Cart should be empty.");
     }
+
+    @Test(priority = 18, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatExitButtonFromBurgerMenuIsVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        headerPage.clickOnBurgerMenuButton();
+        leftNavPage.waitUntilExitButtonIsVisible();
+    }
 }
