@@ -258,7 +258,7 @@ public class ConfirmationTests extends BasicTest {
     }
 
     @Test(priority = 17, retryAnalyzer = RetryAnalyzer.class)
-    public void VerifyThatResetAppOptionFromLeftNavigationMenuIsWorking() {
+    public void VerifyThatResetAppOptionFromBurgerMenuIsWorking() {
 
         loginPage.loginWIthValidCredentials();
         inventoryPage.clickOnAddToCartButtonWithIndex(0);
@@ -272,5 +272,20 @@ public class ConfirmationTests extends BasicTest {
         headerPage.clickOnBurgerMenuButton();
         leftNavPage.waitUntilBurgerMenuOptionsBecomeVisible();
         leftNavPage.clickOnResetAppButton();
+    }
+
+    @Test(priority = 18, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatExitButtonFromBurgerMenuIsVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(5);
+        headerPage.clickOnCartIcon();
+        cartPage.waitForCartPageToContainAddedProducts();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.clickOnFinishButton();
+        headerPage.clickOnBurgerMenuButton();
+        leftNavPage.waitUntilExitButtonIsVisible();
     }
 }
