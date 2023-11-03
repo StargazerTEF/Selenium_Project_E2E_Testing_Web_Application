@@ -544,4 +544,14 @@ public class CheckoutTests extends BasicTest {
         cartPage.clickOnCheckoutButton();
         checkoutPage.waitUntilCancelButtonIsVisible();
     }
+
+    @Test(priority = 41, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatCancelButtonIsEnabled() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        Assert.assertTrue(checkoutPage.getCancelButton().isEnabled(),
+                "Cancel button should be enabled.");
+    }
 }
