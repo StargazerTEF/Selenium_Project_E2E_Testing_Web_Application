@@ -32,4 +32,16 @@ public class PaymentTests extends BasicTest {
         Assert.assertEquals(driver.getTitle(), "Swag Labs",
                 "Title for this page should be 'Swag Labs'.");
     }
+
+    @Test(priority = 3, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyTheTitleInHeader() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        Assert.assertEquals(paymentPage.getHeaderText(), "Swag Labs",
+                "Title for this page should be 'Swag Labs'.");
+    }
 }
