@@ -19,7 +19,6 @@ public class CheckoutPage extends BasicPage{
     public WebElement getSubHeaderTitle() {
         return driver.findElement(By.cssSelector("span.title"));
     }
-
     public String getSubHeaderTitleText() {
         return getSubHeaderTitle().getText();
     }
