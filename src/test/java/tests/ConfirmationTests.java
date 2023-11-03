@@ -365,4 +365,20 @@ public class ConfirmationTests extends BasicTest {
         paymentPage.clickOnFinishButton();
         confirmationPage.waitUntilBackHomeButtonIsVisible();
     }
+
+    @Test(priority = 24, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatBackHomeButtonIsEnabled() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(4);
+        headerPage.clickOnCartIcon();
+        cartPage.waitForCartPageToContainAddedProducts();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.clickOnFinishButton();
+        confirmationPage.waitUntilBackHomeButtonIsVisible();
+        Assert.assertTrue(confirmationPage.getBackHomeButton().isEnabled(),
+                "Back home button should be enabled.");
+    }
 }
