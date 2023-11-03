@@ -584,4 +584,23 @@ public class CheckoutTests extends BasicTest {
         Assert.assertTrue(checkoutPage.getContinueButton().isEnabled(),
                 "Continue button should be enabled.");
     }
+
+    @Test(priority = 45, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatContinueButtonIsWorking() {
+
+        String firstName = "Aki";
+        String lastName = "Akic";
+        String zipCode = "11000";
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillInFirstNameField(firstName);
+        checkoutPage.fillInLastNameField(lastName);
+        checkoutPage.fillInZipCodeField(zipCode);
+        checkoutPage.clickOnContinueButton();
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "checkout-step-two.html",
+                "User should be redirected to the payment page.");
+    }
 }
