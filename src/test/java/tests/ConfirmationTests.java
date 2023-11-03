@@ -288,4 +288,21 @@ public class ConfirmationTests extends BasicTest {
         headerPage.clickOnBurgerMenuButton();
         leftNavPage.waitUntilExitButtonIsVisible();
     }
+
+    @Test(priority = 19, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatExitButtonFromBurgerMenuIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(3);
+        headerPage.clickOnCartIcon();
+        cartPage.waitForCartPageToContainAddedProducts();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.clickOnFinishButton();
+        headerPage.clickOnBurgerMenuButton();
+        leftNavPage.waitUntilExitButtonIsVisible();
+        leftNavPage.clickOnExitButton();
+        leftNavPage.waitUntilBurgerMenuOptionsBecomeInvisible();
+    }
 }
