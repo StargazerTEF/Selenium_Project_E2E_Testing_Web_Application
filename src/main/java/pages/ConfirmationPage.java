@@ -50,4 +50,7 @@ public class ConfirmationPage extends BasicPage {
                 .withMessage("Back to home button should be visible.")
                 .until(ExpectedConditions.visibilityOf(getBackHomeButton()));
     }
+    public void clickOnBackHomeButton() {
+        getBackHomeButton().click();
+    }
 }
