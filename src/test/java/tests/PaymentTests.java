@@ -406,4 +406,20 @@ public class PaymentTests extends BasicTest {
                 paymentPage.getTotalSumOfAllItemsAddedToTheCart(),
                 "Total price of all elements added to the cart should be equal to the total sum without tax in the payment page information.");
     }
+
+    @Test(priority = 31, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyTheTotalPriceWithTax() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(1);
+        inventoryPage.clickOnAddToCartButtonWithIndex(4);
+        inventoryPage.clickOnAddToCartButtonWithIndex(2);
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        Assert.assertEquals(paymentPage.getTotalPriceOfAddedItemsWithTax(),
+                paymentPage.getTotalSumOfAddedItemsWithTaxNumber(),
+                "Total price of all elements added to the cart with tax should be equal to the total sum in the payment page information.");
+    }
 }

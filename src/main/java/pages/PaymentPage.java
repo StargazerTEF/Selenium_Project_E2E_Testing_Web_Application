@@ -120,4 +120,25 @@ public class PaymentPage extends BasicPage{
     public double getTotalSumOfAllItemsAddedToTheCart() {
         return Double.parseDouble(getSumOfAllItemsAddedToTheCartString());
     }
+    public WebElement getTax() {
+        return driver.findElement(By.className("summary_tax_label"));
+    }
+    public String getTaxString() {
+        return getTax().getText().replace("Tax: $", "");
+    }
+    public double getTaxNumber() {
+        return Double.parseDouble(getTaxString());
+    }
+    public double getTotalPriceOfAddedItemsWithTax() {
+        return getTotalPriceOfItemsAddedToTheCart() + getTaxNumber();
+    }
+    public WebElement getTotalSumOfAddedItemsWithTax() {
+        return driver.findElement(By.className("summary_total_label"));
+    }
+    public String getTotalSumOfAddedItemsWithTaxString() {
+        return getTotalSumOfAddedItemsWithTax().getText().replace("Total: $", "");
+    }
+    public double getTotalSumOfAddedItemsWithTaxNumber() {
+        return Double.parseDouble(getTotalSumOfAddedItemsWithTaxString());
+    }
 }
