@@ -462,4 +462,19 @@ public class PaymentTests extends BasicTest {
         checkoutPage.clickOnContinueButton();
         paymentPage.waitUntilFinishButtonIsVisible();
     }
+
+    @Test(priority = 35, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatFinishButtonIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(1);
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.clickOnFinishButton();
+        Assert.assertEquals(paymentPage.getTextInsideMessageForSuccessfulOrder(),
+                "Thank you for your order!",
+                "Text of the message should be 'Thank you for your order!' ");
+    }
 }

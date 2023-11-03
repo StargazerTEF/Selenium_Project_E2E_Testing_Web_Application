@@ -160,4 +160,13 @@ public class PaymentPage extends BasicPage{
                 .withMessage("Finish button should be visible on the page.")
                 .until(ExpectedConditions.visibilityOf(getFinishButton()));
     }
+    public void clickOnFinishButton() {
+        getFinishButton().click();
+    }
+    public WebElement getMessageForSuccessfulOrder() {
+        return driver.findElement(By.className("complete-header"));
+    }
+    public String getTextInsideMessageForSuccessfulOrder() {
+        return getMessageForSuccessfulOrder().getText();
+    }
 }
