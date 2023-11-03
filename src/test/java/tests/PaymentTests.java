@@ -169,4 +169,19 @@ public class PaymentTests extends BasicTest {
         Assert.assertTrue(leftNavPage.checkSpellingOfAllOptionsInBurgerMenu(),
                 "Spelling of elements in burger menu is not valid.");
     }
+
+    @Test(priority = 14, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatAllItemsOptionFromBurgerMenuIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        headerPage.clickOnBurgerMenuButton();
+        leftNavPage.waitUntilBurgerMenuOptionsBecomeVisible();
+        leftNavPage.clickOnAllItemsLink();
+        Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "inventory.html",
+                "User should be redirected to the products page.");
+    }
 }
