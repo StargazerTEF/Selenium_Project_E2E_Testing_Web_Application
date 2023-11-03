@@ -184,4 +184,21 @@ public class ConfirmationTests extends BasicTest {
         Assert.assertEquals(leftNavPage.getNumberOfBurgerMenuOptions(), 4,
                 "Burger menu should contain 4 options.");
     }
+
+    @Test(priority = 13, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifySpellingOfAllOptionsInBurgerMenu() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(3);
+        headerPage.clickOnCartIcon();
+        cartPage.waitForCartPageToContainAddedProducts();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.clickOnFinishButton();
+        headerPage.clickOnBurgerMenuButton();
+        leftNavPage.waitUntilBurgerMenuOptionsBecomeVisible();
+        Assert.assertTrue(leftNavPage.checkSpellingOfAllOptionsInBurgerMenu(),
+                "Spelling of elements in burger menu is not correct.");
+    }
 }
