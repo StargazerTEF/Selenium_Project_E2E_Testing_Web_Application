@@ -167,4 +167,21 @@ public class ConfirmationTests extends BasicTest {
         Assert.assertEquals(confirmationPage.getSubHeaderTitleText(), "Checkout: Complete!",
                 "Sub title header for cart page should be 'Checkout: Complete!'");
     }
+
+    @Test(priority = 12, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyTotalNumberOfOptionsInBurgerMenu() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(5);
+        headerPage.clickOnCartIcon();
+        cartPage.waitForCartPageToContainAddedProducts();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.clickOnFinishButton();
+        headerPage.clickOnBurgerMenuButton();
+        leftNavPage.waitUntilBurgerMenuOptionsBecomeVisible();
+        Assert.assertEquals(leftNavPage.getNumberOfBurgerMenuOptions(), 4,
+                "Burger menu should contain 4 options.");
+    }
 }
