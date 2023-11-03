@@ -238,4 +238,22 @@ public class ConfirmationTests extends BasicTest {
                 "https://saucelabs.com/",
                 "User should be redirected to the Sauce Labs Website.");
     }
+
+    @Test(priority = 16, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatLogoutOptionFromBurgerMenuIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(2);
+        headerPage.clickOnCartIcon();
+        cartPage.waitForCartPageToContainAddedProducts();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.clickOnFinishButton();
+        headerPage.clickOnBurgerMenuButton();
+        leftNavPage.waitUntilBurgerMenuOptionsBecomeVisible();
+        leftNavPage.clickOnLogoutButton();
+        Assert.assertTrue(loginPage.doesUsernameFieldExist(),
+                "User should be redirected to the login page.");
+    }
 }
