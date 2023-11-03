@@ -38,4 +38,14 @@ public class CheckoutTests extends BasicTest {
                 "Swag Labs",
                 "Title in the header should be 'Swag Labs'.");
     }
+
+    @Test(priority = 4, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatBurgerMenuButtonIsPresent() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        Assert.assertTrue(headerPage.doesBurgerMenuButtonExist(),
+                "Burger menu button should be present.");
+    }
 }
