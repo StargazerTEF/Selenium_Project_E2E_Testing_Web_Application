@@ -524,4 +524,18 @@ public class PaymentTests extends BasicTest {
         Assert.assertTrue(driver.getCurrentUrl().contains("twitter"),
                 "Current url should contain 'twitter'.");
     }
+
+    @Test(priority = 40, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatFacebookIconIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        footerPage.clickOnFacebookIcon();
+        footerPage.switchToNewTab();
+        Assert.assertTrue(driver.getCurrentUrl().contains("facebook"),
+                "Current url should contain 'facebook'.");
+    }
 }
