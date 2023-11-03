@@ -15,4 +15,10 @@ public class ConfirmationPage extends BasicPage {
     public String getHeaderTitleText() {
         return getHeaderTitle().getText();
     }
+    public WebElement getSubHeaderTitle () {
+        return driver.findElement(By.cssSelector("span.title"));
+    }
+    public String getSubHeaderTitleText() {
+        return getSubHeaderTitle().getText();
+    }
 }

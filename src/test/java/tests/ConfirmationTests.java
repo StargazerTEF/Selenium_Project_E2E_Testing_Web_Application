@@ -152,4 +152,19 @@ public class ConfirmationTests extends BasicTest {
         Assert.assertEquals(headerPage.getNumberOfProductsInCart(), "",
                 "Cart icon should be empty.");
     }
+
+    @Test(priority = 11, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyTheSubHeaderTitle() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(2);
+        headerPage.clickOnCartIcon();
+        cartPage.waitForCartPageToContainAddedProducts();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.clickOnFinishButton();
+        Assert.assertEquals(confirmationPage.getSubHeaderTitleText(), "Checkout: Complete!",
+                "Sub title header for cart page should be 'Checkout: Complete!'");
+    }
 }
