@@ -27,4 +27,15 @@ public class CheckoutTests extends BasicTest {
                 "Swag Labs",
                 "Title of the page should be 'Swag Labs'.");
     }
+
+    @Test(priority = 3, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyTheTitleInHeader() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        Assert.assertEquals(checkoutPage.getHeaderText(),
+                "Swag Labs",
+                "Title in the header should be 'Swag Labs'.");
+    }
 }

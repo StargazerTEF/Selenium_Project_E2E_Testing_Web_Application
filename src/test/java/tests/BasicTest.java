@@ -28,6 +28,7 @@ public abstract class BasicTest {
     protected CartPage cartPage;
     protected ItemPage itemPage;
     protected FooterPage footerPage;
+    protected CheckoutPage checkoutPage;
 
     @BeforeClass
     public void setup() {
@@ -46,6 +47,7 @@ public abstract class BasicTest {
         cartPage = new CartPage(driver, wait);
         itemPage = new ItemPage(driver, wait);
         footerPage = new FooterPage(driver, wait);
+        checkoutPage = new CheckoutPage(driver, wait);
     }
 
     @BeforeMethod
