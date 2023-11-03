@@ -65,4 +65,10 @@ public class CheckoutPage extends BasicPage{
     public void clickOnContinueButton() {
         getContinueButton().click();
     }
+    public WebElement getErrorMessage() {
+        return driver.findElement(By.cssSelector("div.error-message-container > h3"));
+    }
+    public String getErrorMessageText() {
+        return getErrorMessage().getText();
+    }
 }

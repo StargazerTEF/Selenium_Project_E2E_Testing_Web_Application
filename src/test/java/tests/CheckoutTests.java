@@ -300,4 +300,22 @@ public class CheckoutTests extends BasicTest {
                 baseUrl + "checkout-step-two.html",
                 "User should be redirected to the payment page.");
     }
+
+    @Test(priority = 27, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatUserCantCheckoutWithoutZipCode() {
+
+        String firstName = "Aki";
+        String lastName = "Akic";
+        String zipCode = "";
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillInFirstNameField(firstName);
+        checkoutPage.fillInLastNameField(lastName);
+        checkoutPage.fillInZipCodeField(zipCode);
+        checkoutPage.clickOnContinueButton();
+        Assert.assertEquals(checkoutPage.getErrorMessageText(), "Error: Postal Code is required",
+                "Text of error message should be 'Error: Postal Code is required'.");
+    }
 }
