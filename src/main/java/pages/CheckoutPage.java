@@ -82,4 +82,9 @@ public class CheckoutPage extends BasicPage{
     public void clickOnCancelButton() {
         getCancelButton().click();
     }
+    public void waitUntilContinueButtonIsVisible () {
+        wait
+                .withMessage("Continue button should be visible on the page.")
+                .until(ExpectedConditions.visibilityOf(getContinueButton()));
+    }
 }

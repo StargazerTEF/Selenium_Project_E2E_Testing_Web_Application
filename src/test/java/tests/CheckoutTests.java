@@ -565,4 +565,13 @@ public class CheckoutTests extends BasicTest {
         Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "cart.html",
                 "User should be redirected to the cart page.");
     }
+
+    @Test(priority = 43, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatContinueButtonIsPresent() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.waitUntilContinueButtonIsVisible();
+    }
 }
