@@ -133,4 +133,17 @@ public class CheckoutTests extends BasicTest {
         Assert.assertTrue(leftNavPage.checkSpellingOfAllOptionsInBurgerMenu(),
                 "Options in burger menu are not spelled correctly.");
     }
+
+    @Test(priority = 13, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatAllItemsOptionFromBurgerMenuIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        headerPage.clickOnBurgerMenuButton();
+        leftNavPage.waitUntilBurgerMenuOptionsBecomeVisible();
+        leftNavPage.clickOnAllItemsLink();
+        Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "inventory.html",
+                "User should be redirected to the products page.");
+    }
 }
