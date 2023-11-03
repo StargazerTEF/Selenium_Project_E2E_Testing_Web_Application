@@ -426,4 +426,22 @@ public class CheckoutTests extends BasicTest {
         Assert.assertEquals(checkoutPage.getErrorMessageText(), "Error: First Name is required",
                 "Text of error message should be 'Error: First Name is required'.");
     }
+
+    @Test(priority = 34, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatUserCantCheckoutWithFirstNameFieldContainingNumbers() {
+
+        String firstName = "123";
+        String lastName = "Akic";
+        String zipCode = "11000";
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillInFirstNameField(firstName);
+        checkoutPage.fillInLastNameField(lastName);
+        checkoutPage.fillInZipCodeField(zipCode);
+        checkoutPage.clickOnContinueButton();
+        Assert.assertEquals(checkoutPage.getErrorMessageText(), "Error: First Name is Invalid",
+                "Text of error message should be 'Error: First Name is Invalid'.");
+    }
 }
