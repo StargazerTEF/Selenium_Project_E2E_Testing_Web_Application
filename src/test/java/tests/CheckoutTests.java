@@ -259,4 +259,15 @@ public class CheckoutTests extends BasicTest {
         Assert.assertTrue(checkoutPage.getFirstNameField().isEnabled(),
                 "First name field should be enabled.");
     }
+
+    @Test(priority = 24, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatLastNameFieldIsEnabled() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.waitUntilLastNameFieldIsVisible();
+        Assert.assertTrue(checkoutPage.getLastNameField().isEnabled(),
+                "Last name field should be enabled.");
+    }
 }
