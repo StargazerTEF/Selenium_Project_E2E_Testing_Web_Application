@@ -422,4 +422,16 @@ public class ConfirmationTests extends BasicTest {
         paymentPage.clickOnFinishButton();
         footerPage.waitUntilFacebookIconIsVisible();
     }
+
+    @Test(priority = 28, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatLinkedInIconIsVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.clickOnFinishButton();
+        footerPage.waitUntilLinkedInIconIsVisible();
+    }
 }
