@@ -390,4 +390,20 @@ public class PaymentTests extends BasicTest {
         Assert.assertEquals(paymentPage.getShippingInformationText(), "Shipping Information",
                 "Shipping information isn't spelled correctly.");
     }
+
+    @Test(priority = 30, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThePriceOfAllAddedItems() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(5);
+        inventoryPage.clickOnAddToCartButtonWithIndex(0);
+        inventoryPage.clickOnAddToCartButtonWithIndex(3);
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        Assert.assertEquals(paymentPage.getTotalPriceOfItemsAddedToTheCart(),
+                paymentPage.getTotalSumOfAllItemsAddedToTheCart(),
+                "Total price of all elements added to the cart should be equal to the total sum without tax in the payment page information.");
+    }
 }

@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PaymentPage extends BasicPage{
@@ -86,5 +87,37 @@ public class PaymentPage extends BasicPage{
     }
     public String getShippingInformationText () {
         return getShippingInformation().getText();
+    }
+    public List<String> getPricesWithout$OfItemsAddedToTheCart () {
+        List<String> pricesWithout$ = new ArrayList<>();
+        for (int i = 0; i < getPricesOfProductsAddedToTheCart().size(); i++) {
+            String priceWithout$ = getPricesOfProductsAddedToTheCart().get(i).getText().replace("$", "");
+            pricesWithout$.add(priceWithout$);
+        }
+        return pricesWithout$;
+    }
+    public List<Double> getPricesDoubleOfItemsAddedToTheCart() {
+        List<Double> pricesDouble = new ArrayList<>();
+        for (int i = 0; i < getPricesWithout$OfItemsAddedToTheCart().size(); i++) {
+            double priceDouble = Double.parseDouble(getPricesWithout$OfItemsAddedToTheCart().get(i));
+            pricesDouble.add(priceDouble);
+        }
+        return pricesDouble;
+    }
+    public double getTotalPriceOfItemsAddedToTheCart() {
+        double sum = 0;
+        for (int i = 0; i < getPricesDoubleOfItemsAddedToTheCart().size(); i++) {
+            sum += getPricesDoubleOfItemsAddedToTheCart().get(i);
+        }
+        return sum;
+    }
+    public WebElement getSumOfAllItemsAddedToTheCart() {
+        return driver.findElement(By.className("summary_subtotal_label"));
+    }
+    public String getSumOfAllItemsAddedToTheCartString() {
+        return getSumOfAllItemsAddedToTheCart().getText().replace("Item total: $", "");
+    }
+    public double getTotalSumOfAllItemsAddedToTheCart() {
+        return Double.parseDouble(getSumOfAllItemsAddedToTheCartString());
     }
 }
