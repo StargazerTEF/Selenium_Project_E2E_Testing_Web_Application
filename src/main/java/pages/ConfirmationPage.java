@@ -30,4 +30,10 @@ public class ConfirmationPage extends BasicPage {
                 .withMessage("Confirmation message image should be visible.")
                 .until(ExpectedConditions.visibilityOf(getConfirmationMessageImage()));
     }
+    public WebElement getConfirmationMessageHeader() {
+        return driver.findElement(By.className("complete-header"));
+    }
+    public String getConfirmationMessageHeaderText() {
+        return getConfirmationMessageHeader().getText();
+    }
 }
