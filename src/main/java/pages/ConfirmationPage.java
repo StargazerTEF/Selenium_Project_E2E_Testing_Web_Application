@@ -36,4 +36,10 @@ public class ConfirmationPage extends BasicPage {
     public String getConfirmationMessageHeaderText() {
         return getConfirmationMessageHeader().getText();
     }
+    public WebElement getConfirmationMessageBody() {
+        return driver.findElement(By.className("complete-text"));
+    }
+    public String getConfirmationMessageBodyText() {
+        return getConfirmationMessageBody().getText();
+    }
 }

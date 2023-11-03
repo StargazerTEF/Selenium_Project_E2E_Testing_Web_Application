@@ -335,4 +335,20 @@ public class ConfirmationTests extends BasicTest {
                 "Thank you for your order!",
                 "Confirmation message header text isn't spelled correctly.");
     }
+
+    @Test(priority = 22, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyConfirmationMessageBodyTextSpelling() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(2);
+        headerPage.clickOnCartIcon();
+        cartPage.waitForCartPageToContainAddedProducts();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.clickOnFinishButton();
+        Assert.assertEquals(confirmationPage.getConfirmationMessageBodyText(),
+                "Your order has been dispatched, and will arrive just as fast as the pony can get there!",
+                "Confirmation message body text isn't spelled correctly.");
+    }
 }
