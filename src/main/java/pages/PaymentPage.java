@@ -72,4 +72,7 @@ public class PaymentPage extends BasicPage{
                 .withMessage("Item's title should be clickable.")
                 .until(ExpectedConditions.elementToBeClickable(getTitleOfProductAddedToTheCartWithIndex(indexOfProduct)));
     }
+    public void clickOnItemsTitle (int indexOfProduct) {
+        getTitleOfProductAddedToTheCartWithIndex(indexOfProduct).click();
+    }
 }

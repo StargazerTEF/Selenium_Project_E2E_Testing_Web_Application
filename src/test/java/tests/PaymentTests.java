@@ -349,4 +349,19 @@ public class PaymentTests extends BasicTest {
         checkoutPage.clickOnContinueButton();
         paymentPage.waitUntilItemsTitleIsClickable(0);
     }
+
+    @Test(priority = 27, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatItemsTitleIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(0);
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.waitUntilItemsTitleIsClickable(0);
+        paymentPage.clickOnItemsTitle(0);
+        Assert.assertTrue(driver.getCurrentUrl().contains("item"),
+                "User should be redirected to the item page.");
+    }
 }
