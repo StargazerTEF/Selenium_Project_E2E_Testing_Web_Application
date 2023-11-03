@@ -287,4 +287,16 @@ public class PaymentTests extends BasicTest {
                 headerPage.getNumberOfProductsInCartInt(),
                 "Number of added products to the cart and on the payment page should be equal.");
     }
+
+    @Test(priority = 22, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatItemsTitlesAddedToTheCartAreVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(2);
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.waitForAddedProductsTitlesToBeVisibleOnThePage();
+    }
 }

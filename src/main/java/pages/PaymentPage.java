@@ -32,4 +32,12 @@ public class PaymentPage extends BasicPage{
                 .withMessage("Added products should be visible on the page.")
                 .until(ExpectedConditions.visibilityOfAllElements(getProductsAddedToTheCart()));
     }
+    public List<WebElement> getTitlesOfProductsAddedToTheCart () {
+        return driver.findElements(By.className("inventory_item_name"));
+    }
+    public void waitForAddedProductsTitlesToBeVisibleOnThePage () {
+        wait
+                .withMessage("Titles of added products should be visible on the page.")
+                .until(ExpectedConditions.visibilityOfAllElements(getTitlesOfProductsAddedToTheCart()));
+    }
 }
