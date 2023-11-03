@@ -465,4 +465,19 @@ public class ConfirmationTests extends BasicTest {
         Assert.assertTrue(driver.getCurrentUrl().contains("facebook"),
                 "Current url should contain 'facebook'.");
     }
+
+    @Test(priority = 31, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatLinkedInIconIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.clickOnFinishButton();
+        footerPage.clickOnLinkedInIcon();
+        footerPage.switchToNewTab();
+        Assert.assertTrue(driver.getCurrentUrl().contains("linkedin"),
+                "Current url should contain 'linkedin'.");
+    }
 }
