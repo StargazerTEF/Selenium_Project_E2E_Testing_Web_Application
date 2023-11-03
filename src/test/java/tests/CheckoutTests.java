@@ -248,4 +248,15 @@ public class CheckoutTests extends BasicTest {
         cartPage.clickOnCheckoutButton();
         checkoutPage.waitUntilZipCodeFieldIsVisible();
     }
+
+    @Test(priority = 23, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatFirstNameFieldIsEnabled() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.waitUntilFirstNameFieldIsVisible();
+        Assert.assertTrue(checkoutPage.getFirstNameField().isEnabled(),
+                "First name field should be enabled.");
+    }
 }
