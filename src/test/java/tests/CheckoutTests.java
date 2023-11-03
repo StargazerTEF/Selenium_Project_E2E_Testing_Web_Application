@@ -603,4 +603,13 @@ public class CheckoutTests extends BasicTest {
                 baseUrl + "checkout-step-two.html",
                 "User should be redirected to the payment page.");
     }
+
+    @Test(priority = 46, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatTwitterButtonIsPresent() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        footerPage.waitUntilTwitterIconIsVisible();
+    }
 }
