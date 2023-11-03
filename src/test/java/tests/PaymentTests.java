@@ -337,4 +337,16 @@ public class PaymentTests extends BasicTest {
         checkoutPage.clickOnContinueButton();
         paymentPage.waitForAddedProductsQuantitiesToBeVisibleOnThePage();
     }
+
+    @Test(priority = 26, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatItemsTitleIsClickable() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(5);
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.waitUntilItemsTitleIsClickable(0);
+    }
 }
