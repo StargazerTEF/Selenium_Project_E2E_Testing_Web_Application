@@ -56,4 +56,12 @@ public class PaymentPage extends BasicPage{
                 .withMessage("Prices of added products should be visible on the page.")
                 .until(ExpectedConditions.visibilityOfAllElements(getPricesOfProductsAddedToTheCart()));
     }
+    public List<WebElement> getQuantitiesOfProductsAddedToTheCart() {
+        return driver.findElements(By.cssSelector(".cart_item .cart_quantity"));
+    }
+    public void waitForAddedProductsQuantitiesToBeVisibleOnThePage() {
+        wait
+                .withMessage("Quantities of added products should be visible on the page.")
+                .until(ExpectedConditions.visibilityOfAllElements(getQuantitiesOfProductsAddedToTheCart()));
+    }
 }
