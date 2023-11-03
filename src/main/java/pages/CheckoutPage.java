@@ -47,4 +47,22 @@ public class CheckoutPage extends BasicPage{
                 .withMessage("Zip code field should be visible on the page.")
                 .until(ExpectedConditions.visibilityOf(getZipCodeField()));
     }
+    public void fillInFirstNameField (String firstName) {
+        getFirstNameField().clear();
+        getFirstNameField().sendKeys(firstName);
+    }
+    public void fillInLastNameField (String lastName) {
+        getLastNameField().clear();
+        getLastNameField().sendKeys(lastName);
+    }
+    public void fillInZipCodeField (String zipCode) {
+        getZipCodeField().clear();
+        getZipCodeField().sendKeys(zipCode);
+    }
+    public WebElement getContinueButton() {
+        return driver.findElement(By.id("continue"));
+    }
+    public void clickOnContinueButton() {
+        getContinueButton().click();
+    }
 }

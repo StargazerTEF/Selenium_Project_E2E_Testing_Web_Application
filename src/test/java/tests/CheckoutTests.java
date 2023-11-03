@@ -281,4 +281,23 @@ public class CheckoutTests extends BasicTest {
         Assert.assertTrue(checkoutPage.getZipCodeField().isEnabled(),
                 "Zip code field should be enabled.");
     }
+
+    @Test(priority = 26, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyValidInformationInput() {
+
+        String firstName = "Aki";
+        String lastName = "Akic";
+        String zipCode = "11000";
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillInFirstNameField(firstName);
+        checkoutPage.fillInLastNameField(lastName);
+        checkoutPage.fillInZipCodeField(zipCode);
+        checkoutPage.clickOnContinueButton();
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "checkout-step-two.html",
+                "User should be redirected to the payment page.");
+    }
 }
