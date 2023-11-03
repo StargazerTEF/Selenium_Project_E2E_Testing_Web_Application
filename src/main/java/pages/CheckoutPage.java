@@ -31,4 +31,12 @@ public class CheckoutPage extends BasicPage{
                 .withMessage("First name field should be visible on the page.")
                 .until(ExpectedConditions.visibilityOf(getFirstNameField()));
     }
+    public WebElement getLastNameField() {
+        return driver.findElement(By.id("last-name"));
+    }
+    public void waitUntilLastNameFieldIsVisible () {
+        wait
+                .withMessage("Last name field should be visible on the page.")
+                .until(ExpectedConditions.visibilityOf(getLastNameField()));
+    }
 }

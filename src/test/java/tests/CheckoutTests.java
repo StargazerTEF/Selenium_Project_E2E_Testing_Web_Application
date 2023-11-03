@@ -230,4 +230,13 @@ public class CheckoutTests extends BasicTest {
         cartPage.clickOnCheckoutButton();
         checkoutPage.waitUntilFirstNameFieldIsVisible();
     }
+
+    @Test(priority = 21, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatLastNameFieldIsPresent() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.waitUntilLastNameFieldIsVisible();
+    }
 }
