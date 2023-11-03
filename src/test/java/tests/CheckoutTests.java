@@ -517,4 +517,22 @@ public class CheckoutTests extends BasicTest {
         Assert.assertEquals(checkoutPage.getErrorMessageText(), "Error: Last Name is Invalid",
                 "Text of error message should be 'Error: Last Name is Invalid'.");
     }
+
+    @Test(priority = 39, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatUserCantCheckoutWithZipCodeFieldContainingSpecialCharacters() {
+
+        String firstName = "Aki";
+        String lastName = "Akic";
+        String zipCode = "@";
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillInFirstNameField(firstName);
+        checkoutPage.fillInLastNameField(lastName);
+        checkoutPage.fillInZipCodeField(zipCode);
+        checkoutPage.clickOnContinueButton();
+        Assert.assertEquals(checkoutPage.getErrorMessageText(), "Error: Zip Code is Invalid",
+                "Text of error message should be 'Error: Zip Code is Invalid'.");
+    }
 }
