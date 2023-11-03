@@ -87,4 +87,9 @@ public class CheckoutPage extends BasicPage{
                 .withMessage("Continue button should be visible on the page.")
                 .until(ExpectedConditions.visibilityOf(getContinueButton()));
     }
+    public void fillOutCheckoutFormWithValidInputs() {
+        fillInFirstNameField("Aki");
+        fillInLastNameField("Akic");
+        fillInZipCodeField("11000");
+    }
 }
