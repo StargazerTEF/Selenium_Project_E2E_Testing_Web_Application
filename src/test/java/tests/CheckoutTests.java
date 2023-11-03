@@ -669,4 +669,15 @@ public class CheckoutTests extends BasicTest {
         Assert.assertTrue(driver.getCurrentUrl().contains("linkedin"),
                 "Current url should contain 'linkedin'.");
     }
+
+    @Test(priority = 52, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatCopyrightNoticeMessageIsCorrect() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        Assert.assertEquals(footerPage.getCopyRightMessageText(),
+                "© 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy",
+                "Copyright notice message in footer should be '© 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy'.");
+    }
 }
