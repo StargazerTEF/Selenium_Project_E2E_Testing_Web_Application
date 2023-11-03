@@ -434,4 +434,34 @@ public class ConfirmationTests extends BasicTest {
         paymentPage.clickOnFinishButton();
         footerPage.waitUntilLinkedInIconIsVisible();
     }
+
+    @Test(priority = 29, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatTwitterIconIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.clickOnFinishButton();
+        footerPage.clickOnTwitterIcon();
+        footerPage.switchToNewTab();
+        Assert.assertTrue(driver.getCurrentUrl().contains("twitter"),
+                "Current url should contain 'twitter'.");
+    }
+
+    @Test(priority = 30, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatFacebookIconIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.clickOnFinishButton();
+        footerPage.clickOnFacebookIcon();
+        footerPage.switchToNewTab();
+        Assert.assertTrue(driver.getCurrentUrl().contains("facebook"),
+                "Current url should contain 'facebook'.");
+    }
 }
