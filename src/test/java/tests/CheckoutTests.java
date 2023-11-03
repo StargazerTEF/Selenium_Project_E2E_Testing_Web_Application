@@ -612,4 +612,13 @@ public class CheckoutTests extends BasicTest {
         cartPage.clickOnCheckoutButton();
         footerPage.waitUntilTwitterIconIsVisible();
     }
+
+    @Test(priority = 47, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatFacebookButtonIsPresent() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        footerPage.waitUntilFacebookIconIsVisible();
+    }
 }
