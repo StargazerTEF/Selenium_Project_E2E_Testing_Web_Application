@@ -499,4 +499,15 @@ public class PaymentTests extends BasicTest {
         checkoutPage.clickOnContinueButton();
         footerPage.waitUntilFacebookIconIsVisible();
     }
+
+    @Test(priority = 38, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatLinkedInIconIsVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        footerPage.waitUntilLinkedInIconIsVisible();
+    }
 }
