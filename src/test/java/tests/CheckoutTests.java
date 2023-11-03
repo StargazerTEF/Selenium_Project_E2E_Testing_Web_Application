@@ -221,4 +221,13 @@ public class CheckoutTests extends BasicTest {
         Assert.assertEquals(checkoutPage.getSubHeaderTitleText(), "Checkout: Your Information",
                 "Title from sub-header should be 'Checkout: Your Information'.");
     }
+
+    @Test(priority = 20, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatFirstNameFieldIsPresent() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.waitUntilFirstNameFieldIsVisible();
+    }
 }
