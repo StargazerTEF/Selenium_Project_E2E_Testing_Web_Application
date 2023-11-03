@@ -42,4 +42,12 @@ public class ConfirmationPage extends BasicPage {
     public String getConfirmationMessageBodyText() {
         return getConfirmationMessageBody().getText();
     }
+    public WebElement getBackHomeButton() {
+        return driver.findElement(By.id("back-to-products"));
+    }
+    public void waitUntilBackHomeButtonIsVisible() {
+        wait
+                .withMessage("Back to home button should be visible.")
+                .until(ExpectedConditions.visibilityOf(getBackHomeButton()));
+    }
 }

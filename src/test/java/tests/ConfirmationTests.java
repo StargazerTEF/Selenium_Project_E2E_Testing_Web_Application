@@ -351,4 +351,18 @@ public class ConfirmationTests extends BasicTest {
                 "Your order has been dispatched, and will arrive just as fast as the pony can get there!",
                 "Confirmation message body text isn't spelled correctly.");
     }
+
+    @Test(priority = 23, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatBackHomeButtonIsVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(0);
+        headerPage.clickOnCartIcon();
+        cartPage.waitForCartPageToContainAddedProducts();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.clickOnFinishButton();
+        confirmationPage.waitUntilBackHomeButtonIsVisible();
+    }
 }
