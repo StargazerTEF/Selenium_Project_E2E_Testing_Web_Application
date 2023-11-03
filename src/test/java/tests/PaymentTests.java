@@ -552,4 +552,17 @@ public class PaymentTests extends BasicTest {
         Assert.assertTrue(driver.getCurrentUrl().contains("linkedin"),
                 "Current url should contain 'linkedin'.");
     }
+
+    @Test(priority = 42, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyCopyRightNoticeMessage() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        Assert.assertEquals(footerPage.getCopyRightMessageText(),
+                "© 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy",
+                "Copy right notice message in footer should be '© 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy'.");
+    }
 }
