@@ -48,4 +48,14 @@ public class CheckoutTests extends BasicTest {
         Assert.assertTrue(headerPage.doesBurgerMenuButtonExist(),
                 "Burger menu button should be present.");
     }
+
+    @Test(priority = 5, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatCartIconIsPresent() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        Assert.assertTrue(headerPage.doesCartIconExist(),
+                "Cart icon should be present.");
+    }
 }
