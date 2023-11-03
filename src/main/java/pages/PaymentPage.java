@@ -152,4 +152,12 @@ public class PaymentPage extends BasicPage{
     public void clickOnCancelButton() {
         getCancelButton().click();
     }
+    public WebElement getFinishButton() {
+        return driver.findElement(By.id("finish"));
+    }
+    public void waitUntilFinishButtonIsVisible() {
+        wait
+                .withMessage("Finish button should be visible on the page.")
+                .until(ExpectedConditions.visibilityOf(getFinishButton()));
+    }
 }

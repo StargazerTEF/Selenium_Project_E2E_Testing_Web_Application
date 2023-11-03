@@ -450,4 +450,16 @@ public class PaymentTests extends BasicTest {
                 baseUrl + "checkout-step-one.html",
                 "User should be redirected to the checkout page.");
     }
+
+    @Test(priority = 34, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatFinishButtonIsVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(2);
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.waitUntilFinishButtonIsVisible();
+    }
 }
