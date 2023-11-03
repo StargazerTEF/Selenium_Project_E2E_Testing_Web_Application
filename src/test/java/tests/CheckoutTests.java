@@ -643,4 +643,17 @@ public class CheckoutTests extends BasicTest {
         Assert.assertTrue(driver.getCurrentUrl().contains("twitter"),
                 "Current url should contain 'twitter'.");
     }
+
+    @Test(priority = 50, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatFacebookButtonIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        footerPage.waitUntilFacebookIconIsVisible();
+        footerPage.clickOnFacebookIcon();
+        footerPage.switchToNewTab();
+        Assert.assertTrue(driver.getCurrentUrl().contains("facebook"),
+                "Current url should contain 'facebook'.");
+    }
 }
