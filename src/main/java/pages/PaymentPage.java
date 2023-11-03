@@ -141,4 +141,12 @@ public class PaymentPage extends BasicPage{
     public double getTotalSumOfAddedItemsWithTaxNumber() {
         return Double.parseDouble(getTotalSumOfAddedItemsWithTaxString());
     }
+    public WebElement getCancelButton() {
+        return driver.findElement(By.id("cancel"));
+    }
+    public void waitUntilCancelButtonIsVisible() {
+        wait
+                .withMessage("Cancel button should be visible on the page.")
+                .until(ExpectedConditions.visibilityOf(getCancelButton()));
+    }
 }

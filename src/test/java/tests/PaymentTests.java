@@ -422,4 +422,16 @@ public class PaymentTests extends BasicTest {
                 paymentPage.getTotalSumOfAddedItemsWithTaxNumber(),
                 "Total price of all elements added to the cart with tax should be equal to the total sum in the payment page information.");
     }
+
+    @Test(priority = 32, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatCancelButtonIsVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(3);
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.waitUntilCancelButtonIsVisible();
+    }
 }
