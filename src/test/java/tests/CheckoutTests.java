@@ -481,4 +481,22 @@ public class CheckoutTests extends BasicTest {
                 baseUrl + "checkout-step-two.html",
                 "User should be redirected to the payment page.");
     }
+
+    @Test(priority = 37, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatUserCantCheckoutWithFirstNameFieldContainingSpecialCharacters() {
+
+        String firstName = "@";
+        String lastName = "Akic";
+        String zipCode = "11000";
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillInFirstNameField(firstName);
+        checkoutPage.fillInLastNameField(lastName);
+        checkoutPage.fillInZipCodeField(zipCode);
+        checkoutPage.clickOnContinueButton();
+        Assert.assertEquals(checkoutPage.getErrorMessageText(), "Error: First Name is Invalid",
+                "Text of error message should be 'Error: First Name is Invalid'.");
+    }
 }
