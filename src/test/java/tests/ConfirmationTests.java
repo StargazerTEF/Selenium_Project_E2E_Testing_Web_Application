@@ -121,4 +121,19 @@ public class ConfirmationTests extends BasicTest {
         headerPage.clickOnBurgerMenuButton();
         leftNavPage.waitUntilBurgerMenuOptionsBecomeVisible();
     }
+    @Test(priority = 9, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatCartIconIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(4);
+        headerPage.clickOnCartIcon();
+        cartPage.waitForCartPageToContainAddedProducts();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.clickOnFinishButton();
+        headerPage.clickOnCartIcon();
+        Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "cart.html",
+                "User should be redirected to the cart page.");
+    }
 }
