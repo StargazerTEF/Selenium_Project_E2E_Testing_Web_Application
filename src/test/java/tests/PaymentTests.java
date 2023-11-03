@@ -104,4 +104,17 @@ public class PaymentTests extends BasicTest {
         headerPage.clickOnBurgerMenuButton();
         leftNavPage.waitUntilBurgerMenuOptionsBecomeVisible();
     }
+
+    @Test(priority = 9, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatCartIconIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        headerPage.clickOnCartIcon();
+        Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "cart.html",
+                "User should be redirected to the cart page.");
+    }
 }
