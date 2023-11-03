@@ -159,4 +159,17 @@ public class CheckoutTests extends BasicTest {
         Assert.assertEquals(driver.getCurrentUrl(), "https://saucelabs.com/",
                 "User should be redirected to the Sauce Labs website.");
     }
+
+    @Test(priority = 15, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatLogoutOptionFromBurgerMenuIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        headerPage.clickOnBurgerMenuButton();
+        leftNavPage.waitUntilBurgerMenuOptionsBecomeVisible();
+        leftNavPage.clickOnLogoutButton();
+        Assert.assertEquals(driver.getCurrentUrl(), baseUrl,
+                "User should be redirected to the login page.");
+    }
 }
