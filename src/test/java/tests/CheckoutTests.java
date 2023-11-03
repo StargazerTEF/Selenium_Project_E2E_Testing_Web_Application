@@ -554,4 +554,15 @@ public class CheckoutTests extends BasicTest {
         Assert.assertTrue(checkoutPage.getCancelButton().isEnabled(),
                 "Cancel button should be enabled.");
     }
+
+    @Test(priority = 42, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatCancelButtonIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.clickOnCancelButton();
+        Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "cart.html",
+                "User should be redirected to the cart page.");
+    }
 }
