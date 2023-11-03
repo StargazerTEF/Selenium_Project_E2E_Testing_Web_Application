@@ -149,4 +149,7 @@ public class PaymentPage extends BasicPage{
                 .withMessage("Cancel button should be visible on the page.")
                 .until(ExpectedConditions.visibilityOf(getCancelButton()));
     }
+    public void clickOnCancelButton() {
+        getCancelButton().click();
+    }
 }

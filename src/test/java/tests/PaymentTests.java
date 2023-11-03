@@ -434,4 +434,20 @@ public class PaymentTests extends BasicTest {
         checkoutPage.clickOnContinueButton();
         paymentPage.waitUntilCancelButtonIsVisible();
     }
+
+    @Test(priority = 33, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatCancelButtonIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(0);
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.waitUntilCancelButtonIsVisible();
+        paymentPage.clickOnCancelButton();
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "checkout-step-one.html",
+                "User should be redirected to the checkout page.");
+    }
 }
