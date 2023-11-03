@@ -54,7 +54,7 @@ public class PaymentTests extends BasicTest {
         checkoutPage.fillOutCheckoutFormWithValidInputs();
         checkoutPage.clickOnContinueButton();
         Assert.assertTrue(headerPage.doesBurgerMenuButtonExist(),
-                "Burger menu button should exist on the cart page.");
+                "Burger menu button should exist on the page.");
     }
 
     @Test(priority = 5, retryAnalyzer = RetryAnalyzer.class)
@@ -66,6 +66,18 @@ public class PaymentTests extends BasicTest {
         checkoutPage.fillOutCheckoutFormWithValidInputs();
         checkoutPage.clickOnContinueButton();
         Assert.assertTrue(headerPage.doesCartIconExist(),
-                "Cart icon should exist on the cart page.");
+                "Cart icon should exist on the page.");
+    }
+
+    @Test(priority = 6, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatBurgerMenuButtonIsEnabled() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        Assert.assertTrue(headerPage.getBurgerMenuButton().isEnabled(),
+                "Burger menu button should be enabled.");
     }
 }
