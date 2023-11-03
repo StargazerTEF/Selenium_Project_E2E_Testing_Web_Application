@@ -109,4 +109,16 @@ public class CheckoutTests extends BasicTest {
         Assert.assertEquals(headerPage.getNumberOfProductsInCart(), "",
                 "Cart should be empty.");
     }
+
+    @Test(priority = 11, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyTheTotalNumberOfOptionsInBurgerMenu() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        headerPage.clickOnBurgerMenuButton();
+        leftNavPage.waitUntilBurgerMenuOptionsBecomeVisible();
+        Assert.assertEquals(leftNavPage.getNumberOfBurgerMenuOptions(), 4,
+                "Number of options in burger menu should be 4.");
+    }
 }
