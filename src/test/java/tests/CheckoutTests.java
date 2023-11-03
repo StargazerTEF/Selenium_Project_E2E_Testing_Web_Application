@@ -211,4 +211,14 @@ public class CheckoutTests extends BasicTest {
         leftNavPage.clickOnExitButton();
         leftNavPage.waitUntilBurgerMenuOptionsBecomeInvisible();
     }
+
+    @Test(priority = 19, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyTheSubHeaderTitle() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        Assert.assertEquals(checkoutPage.getSubHeaderTitleText(), "Checkout: Your Information",
+                "Title from sub-header should be 'Checkout: Your Information'.");
+    }
 }

@@ -15,4 +15,11 @@ public class CheckoutPage extends BasicPage{
     public String getHeaderText() {
         return getHeader().getText();
     }
+    public WebElement getSubHeaderTitle() {
+        return driver.findElement(By.cssSelector("span.title"));
+    }
+
+    public String getSubHeaderTitleText() {
+        return getSubHeaderTitle().getText();
+    }
 }
