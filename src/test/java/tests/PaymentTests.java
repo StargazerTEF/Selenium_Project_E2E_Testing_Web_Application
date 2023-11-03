@@ -117,4 +117,16 @@ public class PaymentTests extends BasicTest {
         Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "cart.html",
                 "User should be redirected to the cart page.");
     }
+
+    @Test(priority = 10, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatCartIconHasCorrectNumberOfAddedProducts() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        Assert.assertEquals(headerPage.getNumberOfProductsInCart(), "",
+                "Cart should be empty.");
+    }
 }
