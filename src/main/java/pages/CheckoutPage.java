@@ -71,4 +71,12 @@ public class CheckoutPage extends BasicPage{
     public String getErrorMessageText() {
         return getErrorMessage().getText();
     }
+    public WebElement getCancelButton() {
+        return driver.findElement(By.id("cancel"));
+    }
+    public void waitUntilCancelButtonIsVisible () {
+        wait
+                .withMessage("Cancel button should be visible on the page.")
+                .until(ExpectedConditions.visibilityOf(getCancelButton()));
+    }
 }

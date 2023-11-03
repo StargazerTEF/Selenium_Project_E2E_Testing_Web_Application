@@ -535,4 +535,13 @@ public class CheckoutTests extends BasicTest {
         Assert.assertEquals(checkoutPage.getErrorMessageText(), "Error: Zip Code is Invalid",
                 "Text of error message should be 'Error: Zip Code is Invalid'.");
     }
+
+    @Test(priority = 40, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatCancelButtonIsPresent() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.waitUntilCancelButtonIsVisible();
+    }
 }
