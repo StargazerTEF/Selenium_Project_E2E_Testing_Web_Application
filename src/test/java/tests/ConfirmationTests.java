@@ -201,4 +201,22 @@ public class ConfirmationTests extends BasicTest {
         Assert.assertTrue(leftNavPage.checkSpellingOfAllOptionsInBurgerMenu(),
                 "Spelling of elements in burger menu is not correct.");
     }
+
+    @Test(priority = 14, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatAllItemsOptionFromBurgerMenuIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(1);
+        headerPage.clickOnCartIcon();
+        cartPage.waitForCartPageToContainAddedProducts();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.clickOnFinishButton();
+        headerPage.clickOnBurgerMenuButton();
+        leftNavPage.waitUntilBurgerMenuOptionsBecomeVisible();
+        leftNavPage.clickOnAllItemsLink();
+        Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "inventory.html",
+                "User should be redirected to the products page.");
+    }
 }
