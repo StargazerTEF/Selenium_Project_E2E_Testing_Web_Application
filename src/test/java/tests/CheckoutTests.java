@@ -199,4 +199,16 @@ public class CheckoutTests extends BasicTest {
         headerPage.clickOnBurgerMenuButton();
         leftNavPage.waitUntilExitButtonIsVisible();
     }
+
+    @Test(priority = 18, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatExitButtonFromBurgerMenuIsWorking() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        headerPage.clickOnBurgerMenuButton();
+        leftNavPage.waitUntilExitButtonIsVisible();
+        leftNavPage.clickOnExitButton();
+        leftNavPage.waitUntilBurgerMenuOptionsBecomeInvisible();
+    }
 }
