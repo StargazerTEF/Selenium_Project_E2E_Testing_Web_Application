@@ -574,4 +574,14 @@ public class CheckoutTests extends BasicTest {
         cartPage.clickOnCheckoutButton();
         checkoutPage.waitUntilContinueButtonIsVisible();
     }
+
+    @Test(priority = 44, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatContinueButtonIsEnabled() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        Assert.assertTrue(checkoutPage.getContinueButton().isEnabled(),
+                "Continue button should be enabled.");
+    }
 }
