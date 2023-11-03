@@ -477,4 +477,15 @@ public class PaymentTests extends BasicTest {
                 "Thank you for your order!",
                 "Text of the message should be 'Thank you for your order!' ");
     }
+
+    @Test(priority = 36, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatTwitterIconIsVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        footerPage.waitUntilTwitterIconIsVisible();
+    }
 }
