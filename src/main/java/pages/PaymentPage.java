@@ -3,7 +3,10 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 public class PaymentPage extends BasicPage{
     public PaymentPage(WebDriver driver, WebDriverWait wait) {
@@ -20,5 +23,13 @@ public class PaymentPage extends BasicPage{
     }
     public String getSubHeaderTitleText() {
         return getSubHeaderTitle().getText();
+    }
+    public List<WebElement> getProductsAddedToTheCart () {
+        return driver.findElements(By.cssSelector("div.cart_item"));
+    }
+    public void waitForAddedProductsToBeVisibleOnThePage () {
+        wait
+                .withMessage("Added products should be visible on the page.")
+                .until(ExpectedConditions.visibilityOfAllElements(getProductsAddedToTheCart()));
     }
 }
