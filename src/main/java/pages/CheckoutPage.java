@@ -39,4 +39,12 @@ public class CheckoutPage extends BasicPage{
                 .withMessage("Last name field should be visible on the page.")
                 .until(ExpectedConditions.visibilityOf(getLastNameField()));
     }
+    public WebElement getZipCodeField() {
+        return driver.findElement(By.id("postal-code"));
+    }
+    public void waitUntilZipCodeFieldIsVisible () {
+        wait
+                .withMessage("Zip code field should be visible on the page.")
+                .until(ExpectedConditions.visibilityOf(getZipCodeField()));
+    }
 }

@@ -239,4 +239,13 @@ public class CheckoutTests extends BasicTest {
         cartPage.clickOnCheckoutButton();
         checkoutPage.waitUntilLastNameFieldIsVisible();
     }
+
+    @Test(priority = 22, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatZipCodeFieldIsPresent() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.waitUntilZipCodeFieldIsVisible();
+    }
 }
