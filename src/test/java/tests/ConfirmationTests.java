@@ -91,4 +91,19 @@ public class ConfirmationTests extends BasicTest {
         Assert.assertTrue(headerPage.getBurgerMenuButton().isEnabled(),
                 "Burger menu button should be enabled.");
     }
+
+    @Test(priority = 7, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatCartIconIsEnabled() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(3);
+        headerPage.clickOnCartIcon();
+        cartPage.waitForCartPageToContainAddedProducts();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.clickOnFinishButton();
+        Assert.assertTrue(headerPage.getCartIcon().isEnabled(),
+                "Cart icon should be enabled.");
+    }
 }
