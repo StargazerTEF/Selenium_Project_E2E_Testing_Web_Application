@@ -398,4 +398,16 @@ public class ConfirmationTests extends BasicTest {
         Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "inventory.html",
                 "User should be redirected to the inventory page.");
     }
+
+    @Test(priority = 26, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatTwitterIconIsVisible() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.clickOnFinishButton();
+        footerPage.waitUntilTwitterIconIsVisible();
+    }
 }
