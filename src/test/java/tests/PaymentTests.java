@@ -141,4 +141,18 @@ public class PaymentTests extends BasicTest {
         Assert.assertEquals(paymentPage.getSubHeaderTitleText(), "Checkout: Overview",
                 "Sub title header should be 'Checkout: Overview'.");
     }
+
+    @Test(priority = 12, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyTotalNumberOfOptionsInBurgerMenu() {
+
+        loginPage.loginWIthValidCredentials();
+        headerPage.clickOnCartIcon();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        headerPage.clickOnBurgerMenuButton();
+        leftNavPage.waitUntilBurgerMenuOptionsBecomeVisible();
+        Assert.assertEquals(leftNavPage.getNumberOfBurgerMenuOptions(), 4,
+                "Burger menu should contain 4 options.");
+    }
 }
