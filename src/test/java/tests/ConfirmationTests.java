@@ -46,6 +46,7 @@ public class ConfirmationTests extends BasicTest {
         Assert.assertEquals(confirmationPage.getHeaderTitleText(), "Swag Labs",
                 "Title for this page should be 'Swag Labs'.");
     }
+
     @Test(priority = 4, retryAnalyzer = RetryAnalyzer.class)
     public void VerifyThatBurgerMenuButtonIsPresent() {
 
@@ -59,5 +60,20 @@ public class ConfirmationTests extends BasicTest {
         paymentPage.clickOnFinishButton();
         Assert.assertTrue(headerPage.doesBurgerMenuButtonExist(),
                 "Burger menu button should exist on the page.");
+    }
+
+    @Test(priority = 5, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyThatCartIconIsPresent() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(2);
+        headerPage.clickOnCartIcon();
+        cartPage.waitForCartPageToContainAddedProducts();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.clickOnFinishButton();
+        Assert.assertTrue(headerPage.doesCartIconExist(),
+                "Cart icon should exist on the page.");
     }
 }
