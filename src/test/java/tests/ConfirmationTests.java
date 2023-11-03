@@ -31,4 +31,19 @@ public class ConfirmationTests extends BasicTest {
         Assert.assertEquals(driver.getTitle(), "Swag Labs",
                 "Title for this page should be 'Swag Labs'.");
     }
+
+    @Test(priority = 3, retryAnalyzer = RetryAnalyzer.class)
+    public void VerifyTheTitleInHeader() {
+
+        loginPage.loginWIthValidCredentials();
+        inventoryPage.clickOnAddToCartButtonWithIndex(1);
+        headerPage.clickOnCartIcon();
+        cartPage.waitForCartPageToContainAddedProducts();
+        cartPage.clickOnCheckoutButton();
+        checkoutPage.fillOutCheckoutFormWithValidInputs();
+        checkoutPage.clickOnContinueButton();
+        paymentPage.clickOnFinishButton();
+        Assert.assertEquals(confirmationPage.getHeaderTitleText(), "Swag Labs",
+                "Title for this page should be 'Swag Labs'.");
+    }
 }

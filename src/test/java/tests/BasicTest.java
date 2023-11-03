@@ -30,6 +30,7 @@ public abstract class BasicTest {
     protected FooterPage footerPage;
     protected CheckoutPage checkoutPage;
     protected PaymentPage paymentPage;
+    protected ConfirmationPage confirmationPage;
 
     @BeforeClass
     public void setup() {
@@ -50,6 +51,7 @@ public abstract class BasicTest {
         footerPage = new FooterPage(driver, wait);
         checkoutPage = new CheckoutPage(driver, wait);
         paymentPage = new PaymentPage(driver, wait);
+        confirmationPage = new ConfirmationPage(driver, wait);
     }
 
     @BeforeMethod
